@@ -1,14 +1,14 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var partials = require("express-partials");
-var _ = require("underscore");
-var db = require("../database-mysql");
-var Users = require("../database-mysql/models/users.js");
-var bcrypt = require("bcrypt-nodejs");
-var cookieParser = require("cookie-parser");
+let express = require("express");
+let bodyParser = require("body-parser");
+let partials = require("express-partials");
+let _ = require("underscore");
+let db = require("../database-mysql");
+let Users = require("../database-mysql/models/users.js");
+let bcrypt = require("bcrypt-nodejs");
+let cookieParser = require("cookie-parser");
 let alert = require("alert-node");
 
-var app = express();
+let app = express();
 
 app.use(express.static(__dirname + "/../react-client/dist"));
 app.use(partials());

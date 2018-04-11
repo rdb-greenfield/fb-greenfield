@@ -1,9 +1,9 @@
-var db = require("../index.js");
-var mysql = require("mysql");
-var bcrypt = require("bcrypt-nodejs");
+let db = require("../index.js");
+let mysql = require("mysql");
+let bcrypt = require("bcrypt-nodejs");
 
-var insertNewUser = function(fn, ln, e, pw, callback) {
-  var salt = bcrypt.genSaltSync(10);
+let insertNewUser = function(fn, ln, e, pw, callback) {
+  let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(pw, salt);
   let query = `INSERT INTO users (firstName, lastName, pw, email) VALUES ('${fn}', '${ln}', '${hash}', '${e}');`;
   db.query(query, function(err, results, fields) {
@@ -15,7 +15,7 @@ var insertNewUser = function(fn, ln, e, pw, callback) {
   });
 };
 
-var verifyUser = function(pw, hash, callback) {
+let verifyUser = function(pw, hash, callback) {
   let found = false;
   if (bcrypt.compareSync(pw, hash)) {
     found = true;
