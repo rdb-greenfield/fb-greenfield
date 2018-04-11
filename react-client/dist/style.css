@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i");
+
+body {
+  font-family: "PT Serif", sans-serif;
+  margin: 0px;
+  color: #2c3e50;
+  background-color: #ecf0f1;
+  font-size: 1.1em;
+}
+
+h2 {
+  color: #2d2d2d;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  font-family: "PT Serif", sans-serif;
+  color: #ecf0f1;
+  background-color: #e74c3c;
+}
+
+.login h2 {
+  width: 90%;
+  font-family: sans-serif;
+  margin-bottom: -10px;
+  margin-left: 15px;
+}
+
+.login-editor {
+  width: 40%;
+  float: left;
+}
+
+.login-preview {
+  width: 60%;
+  float: right;
+  margin: 0 auto;
+}
+
+.create-input {
+  width: 80%;
+  display: block;
+  font-size: 0.9em;
+  height: 30px;
+  margin-bottom: 15px;
+  border: none;
+  padding: 5px;
+}
+
+.login-input {
+  width: 150px;
+  display: inline;
+  font-size: 0.7em;
+  height: 20px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+  padding: 1px;
+}
+
+.signup-input {
+  width: 330px;
+  display: block;
+  border-radius: 5px;
+  font-size: 0.9em;
+  height: 30px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  border: none;
+  padding: 5px;
+}
+
+.name-input {
+  width: 39.8%;
+  display: inline-block;
+  font-size: 0.9em;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  border: none;
+  padding: 5px;
+}
+
+.names {
+  width: 376px;
+}
+
+.login-submit-button {
+  cursor: pointer;
+  width: 50px;
+  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  color: #ecf0f1;
+  background-color: #395ca9;
+  margin-left: 10px;
+  height: 20px;
+  border: 1px solid slategray;
+}
+
+.signup-submit-button {
+  cursor: pointer;
+  width: 150px;
+  border: none;
+  border-radius: 4px;
+  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  color: #ecf0f1;
+  background-color: #548e42;
+  font-size: 15px;
+  margin-left: 15px;
+  height: 36px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.9em;
+  margin-right: auto;
+  margin-left: 10px;
+  font-family: Sans-serif;
+  color: #ffffff;
+}
+
+.head {
+  background-color: #3b5998;
+  margin: 0px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: "Francois One";
+}

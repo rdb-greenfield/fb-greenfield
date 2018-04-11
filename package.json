@@ -6,7 +6,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "start": "nodemon --ignore node_modules index.js"
+    "start": "open http://localhost:3050/"
   },
   "author": "Beth Johnson",
   "license": "ISC",
@@ -18,18 +18,17 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "alert-node": "^1.2.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.3.4",
     "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.0",
+    "express-partials": "^0.3.0",
     "jquery": "^3.1.1",
     "mysql": "^2.13.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "underscore": "^1.8.3",
-    "express-partials": "^0.3.0",
-    "express-passport-logout": "^0.1.0",
-    "express-session": "^1.15.6",
-    "bcrypt-nodejs": "0.0.3",
-    "cookie-parser": "^1.4.3",
-    "bluebird": "^3.3.4"
+    "underscore": "^1.8.3"
   }
 }
