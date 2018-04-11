@@ -36,6 +36,18 @@ let findUser = function(e, callback) {
   });
 };
 
+let getAllUsers = function(callback) {
+  let query = `SELECT * FROM users;`;
+  db.query(query, function(err, results, fields) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
 module.exports.insertNewUser = insertNewUser;
 module.exports.verifyUser = verifyUser;
 module.exports.findUser = findUser;
+module.exports.getAllUsers = getAllUsers;

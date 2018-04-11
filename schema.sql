@@ -1,101 +1,48 @@
-DROP DATABASE IF EXISTS greenfield;
-CREATE DATABASE greenfield;
-USE greenfield;
-CREATE TABLE users
-(
-      id INT NOT NULL
-      AUTO_INCREMENT,
-  firstName varchar
-      (35) NOT NULL,
-  lastName varchar
-      (35) NOT NULL,
-  pw varchar
-      (100) NOT NULL,
-  profilePicture varchar
-      (100),
-  email varchar
-      (50),
-  aboutMe varchar
-      (500),
-  hometown varchar
-      (50),
-  createdAt timestamp DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY
-      (id)
-);
-      CREATE TABLE friends
-      (
-            id int NOT NULL
-            AUTO_INCREMENT,
-  user1_id int,
-  user2_id int,
-  active boolean,
-  FOREIGN KEY
-            (user1_id) REFERENCES users
-            (id) ON
-            DELETE CASCADE,
-  FOREIGN KEY (user2_id)
-            REFERENCES users
-            (id) ON
-            DELETE CASCADE,
-  PRIMARY KEY (id)
-            );
-            CREATE TABLE posts
-            (
-                  id int NOT NULL
-                  AUTO_INCREMENT,
-  author_id int,
-  owner_id int, 
-  createdAt timestamp DEFAULT CURRENT_TIMESTAMP,
-  body varchar
-                  (500),
-  img varchar
-                  (50),
-  video varchar
-                  (50),
-  likes int,
-  PRIMARY KEY
-                  (id),
-  FOREIGN KEY
-                  (author_id) REFERENCES users
-                  (id) ON
-                  DELETE CASCADE,
-  FOREIGN KEY (owner_id)
-                  REFERENCES users
-                  (id) ON
-                  DELETE CASCADE
-);
-                  CREATE TABLE comments
-                  (
-                        id int NOT NULL
-                        AUTO_INCREMENT,
-  author_id int,
-  post_id int, 
-  parent_id int, 
-  createdAt timestamp DEFAULT CURRENT_TIMESTAMP,
-  body varchar
-                        (500),
-  img varchar
-                        (50),
-  video varchar
-                        (50),
-  likes int,
-  FOREIGN KEY
-                        (author_id) REFERENCES users
-                        (id) ON
-                        DELETE CASCADE,
-  FOREIGN KEY (post_id)
-                        REFERENCES posts
-                        (id) ON
-                        DELETE CASCADE,
-  FOREIGN KEY (parent_id)
-                        REFERENCES comments
-                        (id) ON
-                        DELETE CASCADE,
-  PRIMARY KEY (id)
-                        );
+DROP DATABASE IF EXISTS greenfield; 
 
+CREATE DATABASE greenfield; 
 
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
+USE greenfield; 
+
+CREATE TABLE users 
+  ( 
+     id             INT NOT NULL auto_increment, 
+     firstname      VARCHAR (35) NOT NULL, 
+     lastname       VARCHAR (35) NOT NULL, 
+     pw             VARCHAR (100) NOT NULL, 
+     profilepicture VARCHAR (100), 
+     email          VARCHAR (50), 
+     aboutme        VARCHAR (500), 
+     hometown       VARCHAR (50), 
+     createdat      TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+     PRIMARY KEY (id) 
+  ); 
+
+CREATE TABLE friends 
+  ( 
+     id       INT NOT NULL auto_increment, 
+     user1_id INT, 
+     user2_id INT, 
+     active   BOOLEAN, 
+     FOREIGN KEY (user1_id) REFERENCES users (id) ON DELETE CASCADE, 
+     FOREIGN KEY (user2_id) REFERENCES users (id) ON DELETE CASCADE, 
+     PRIMARY KEY (id) 
+  ); 
+
+CREATE TABLE posts 
+  ( 
+     id        INT NOT NULL auto_increment, 
+     author_id INT, 
+     owner_id  INT, 
+     createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+     body      VARCHAR (500), 
+     img       VARCHAR (50), 
+     video     VARCHAR (50), 
+     likes     INT, 
+     PRIMARY KEY (id), 
+     FOREIGN KEY (author_id) REFERENCES users (id) ON DELETE CASCADE, 
+     FOREIGN KEY (owner_id) REFERENCES users (id) ON DELETE CASCADE 
+  ); 
+/*  Execute this file from the command line by typing: 
+ *    mysql -u root < server/schema.sql 
+ *  to create the database and the tables.*/     
