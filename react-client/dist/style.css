@@ -139,7 +139,6 @@ button {
   font-family: "Francois One";
 }
 
-<<<<<<< HEAD
 .error-login {
   margin-right: 10px;
   color: white;
@@ -160,16 +159,10 @@ button {
   margin-top: 20px;
 }
 
-=======
 a {
   text-decoration: none;
   font-style: white;
 }
-<<<<<<< HEAD
->>>>>>> refactored profile component
-=======
-
->>>>>>> profile components added/css for profile implemented
 /***************** Profile Styling ****************/
 .profileMain {
   margin: 0 auto 0 auto;
@@ -297,7 +290,6 @@ a {
   margin: 0 auto;
   z-index: 0;
 }
-
 .wallFriends {
   grid-column: 1/ 13;
   grid-row: 28/-1;
