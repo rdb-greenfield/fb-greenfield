@@ -7,10 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Facebook</title>
 </head>
-
-<body>
-  <div id="root"></div>
-  <script src="./bundle.js"></script>
-</body>
-
-</html>
+<div id="facebook">
+  <div>
+    <div class="head">
+      <span class="logo">rdb-facebook</span>
+      <form action="/auth/login" method="post">
+        <input id="login_email" name="login_email" class="login-input" type="text" placeholder="Email"></input>
+        <input id="login_password" name="login_password" class="login-input" type="password" placeholder="Password"></input>
+        <button class="login-submit-button">Log In</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="login">
+  <div class="login-editor">
+    <h2>Create a new account</h2>
+    <h5 style="margin-left: 15px">We may or may not sell your data..</h5>
+    <form action="/auth/signup" method="post">
+      <div class="names">
+        <input id="signup_firstname" name="signup_firstname" class="name-input" type="text" placeholder="First name"></input>
+        <input id="signup_lastname" name="signup_lastname" class="name-input" type="text" placeholder="Last name"></input>
+      </div>
+      <input id="signup_email" name="signup_email" class="signup-input" type="text" placeholder="Email"></input>
+      <input id="signup_password" name="signup_password" class="signup-input" type="password" placeholder="Password"></input>
+      <button class="signup-submit-button">Create Account</button>
+    </form>
+  </div>
+</div>
