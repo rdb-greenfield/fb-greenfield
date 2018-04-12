@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchUsers = () => dispatch => {
   axios
-    .get("http://localhost:3050/allUsers")
+    .get("http://localhost:3050/users/getAll")
     .then(function(users) {
       dispatch({
         type: "FETCH_USERS",
