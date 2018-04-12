@@ -26,8 +26,8 @@ router.post("/login", function(req, res, next) {
       if (err) {
         res.send(err);
       }
-      let token = jwt.sign(user, "g6787cQi$q51");
-      return res.json({ user, token });
+      let token = jwt.sign(JSON.parse(JSON.stringify(user[0])), "g6787cQi$q51");
+      res.redirect("/test");
     });
   })(req, res, next);
 });

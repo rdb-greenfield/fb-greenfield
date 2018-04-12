@@ -4,6 +4,9 @@ let Users = require("../database-mysql/models/users.js");
 let alert = require("alert-node");
 let LocalStrategy = require("passport-local").Strategy;
 let passport = require("passport");
+let passportJWT = require("passport-jwt");
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
 
 passport.use(
   "local-login",
@@ -27,7 +30,6 @@ passport.use(
           Users.verifyUser(password, data[0].pw, function(result) {
             // if result = true -> log the user in
             if (result) {
-              alert("Login successful.");
               callback(null, data, { message: "Login successful." });
             } else {
               alert("Incorrect password.");
@@ -36,6 +38,19 @@ passport.use(
           });
         }
       });
+    }
+  )
+);
+
+passport.use(
+  new JWTStrategy(
+    {
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+      secretOrKey: "g6787cQi$q51"
+    },
+    function(jwtPayload, callback) {
+      console.log(jwtPayload);
+      callback(null, jwtPayload);
     }
   )
 );
