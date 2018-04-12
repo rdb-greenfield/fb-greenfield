@@ -38,6 +38,7 @@ let findUser = function(e, callback) {
 
 let getAllUsers = function(callback) {
   let query = `SELECT * FROM users;`;
+  console.log(query);
   db.query(query, function(err, results, fields) {
     if (err) {
       callback(err, null);

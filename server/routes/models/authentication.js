@@ -10,26 +10,32 @@ let passport = require("passport");
 
 // handle user login route
 router.post("/login", function(req, res, next) {
-  passport.authenticate("local-login", { session: false }, function(
-    err,
-    user,
-    info
-  ) {
-    if (err || !user) {
-      return res.status(400).json({
-        message: "something not working",
-        user: user
+  passport.authenticate(
+    "local-login",
+    { session: false, failureRedirect: "/auth/login" },
+    function(err, user, info) {
+      if (err || !user) {
+        console.log(info);
+        return res.status(401).send(JSON.stringify(info));
+      }
+
+      req.login(user, { session: false }, function(err) {
+        if (err) {
+          res.send(err);
+        }
+        let token = jwt.sign(
+          { data: JSON.parse(user[0].email) },
+          "g6787cQi$q51",
+          {
+            expiresIn: "1hr"
+          }
+        );
+        res.set("auth", JSON.stringify({ auth: true, token: token }));
+        res.set("Access-Control-Expose-Headers", "auth");
+        res.send();
       });
     }
-
-    req.login(user, { session: false }, function(err) {
-      if (err) {
-        res.send(err);
-      }
-      let token = jwt.sign(JSON.parse(JSON.stringify(user[0])), "g6787cQi$q51");
-      res.redirect("/test");
-    });
-  })(req, res, next);
+  )(req, res, next);
 });
 
 // handle user signup route
@@ -37,10 +43,8 @@ router.post("/signup", function(req, res) {
   // run user insert function with input values
   Users.findUser(req.body.signup_email, function(err, data) {
     // check if user already exists
-    console.log();
     if (data.length) {
-      alert("User already exists, please login.");
-      res.redirect("/");
+      res.status(401).send("User already exists. Please login.");
     } else {
       // user does not exist, create and login
       Users.insertNewUser(
@@ -56,7 +60,12 @@ router.post("/signup", function(req, res) {
           }
         }
       );
-      res.redirect("/test");
+      let token = jwt.sign({ data: req.body.signup_email }, "g6787cQi$q51", {
+        expiresIn: "1hr"
+      });
+      res.set("auth", JSON.stringify({ auth: true, token: token }));
+      res.set("Access-Control-Expose-Headers", "auth");
+      res.send();
     }
   });
 });
