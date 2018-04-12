@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ListItem from "./ListItem.jsx";
 import { connect } from "react-redux";
-import { fetchUsers } from "../actions/postActions.js";
+import { bindActionCreators } from "redux";
+import { fetchUsers } from "../actions/index.js";
 
 class List extends Component {
   componentDidMount() {
@@ -19,10 +20,19 @@ class List extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users,
-  user: state.user
-});
+function mapStateToProps(state) {
+  return {
+    users: state.users
+  };
+}
 
-export default connect(mapStateToProps, { fetchUsers })(List);
-// There are {this.props.users} items.
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      fetchUsers: fetchUsers
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(List);
