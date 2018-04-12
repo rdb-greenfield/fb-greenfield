@@ -6,17 +6,15 @@ let passport = require("passport");
 let jwt = require("jsonwebtoken");
 let passportJWT = require("passport-jwt");
 let JwtStrategy = passportJWT.Strategy;
-let ExtractJwt = passportJWT.ExtractJwt;
 
 passport.use(
   "local-login",
   new LocalStrategy(
     {
       usernameField: "login_email",
-      passwordField: "login_password",
-      passReqToCallback: true
+      passwordField: "login_password"
     },
-    function(req, email, password, callback) {
+    function(email, password, callback) {
       Users.findUser(email, function(err, data) {
         if (err) {
           callback(err);
