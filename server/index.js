@@ -48,22 +48,34 @@ app.post("/login", function(req, res) {
     // if user doesn't exist, send notification
     if (!data.length) {
       alert("Username not found");
-      res.end("No User");
+      res.send("No User");
     } else {
       // compare user password to hashed password
       Users.verifyUser(req.body.login_password, data[0].pw, function(result) {
         // if result = true -> log the user in
         if (result) {
           // REDIRECT USER TO HOME PAGE HERE
-          res.end();
+          res.send();
         } else {
           alert("Incorrect password, try again.");
-          res.end("Incorrect Password");
+          res.send("Incorrect Password");
         }
       });
     }
   });
   res.redirect("/");
+});
+
+app.get("/allUsers", function(req, res) {
+  Users.getAllUsers(function(err, data) {
+    if (err) {
+      console.log("Error Fetching Users: ", err);
+    } else if (!data) {
+      console.log("There are no users");
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 app.listen(3050, function() {

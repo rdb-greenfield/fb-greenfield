@@ -1,36 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import List from './components/List.jsx';
+// import "babel-polyfill";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import allReducers from "./reducers/index.jsx";
+import List from "./components/List.jsx";
+import thunk from "redux-thunk";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      items: []
-    }
-  }
+const middleware = [thunk];
+const store = createStore(allReducers, {}, applyMiddleware(...middleware));
 
-  componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
-
-  render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <List />
+      </Provider>
+    );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("root"));
