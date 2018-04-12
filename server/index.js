@@ -2,11 +2,9 @@ let express = require("express");
 let bodyParser = require("body-parser");
 let partials = require("express-partials");
 let _ = require("underscore");
-let db = require("../database-mysql");
-let Users = require("../database-mysql/models/users.js");
-let bcrypt = require("bcrypt-nodejs");
-let cookieParser = require("cookie-parser");
-let alert = require("alert-node");
+let base = require("./routes/index");
+let auth = require("./routes/models/authentication");
+require("./passport");
 
 let app = express();
 
@@ -18,6 +16,7 @@ app.use(bodyParser.json());
 // Parse forms (signup/login)
 app.use(bodyParser.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 app.get("/", function(req, res) {
   res.redirect("index.html");
 });
@@ -65,6 +64,10 @@ app.post("/login", function(req, res) {
   });
   res.redirect("/");
 });
+=======
+app.use("/", base);
+app.use("/auth", auth);
+>>>>>>> Routing structure added, auth setup
 
 app.get("/allUsers", function(req, res) {
   Users.getAllUsers(function(err, data) {
