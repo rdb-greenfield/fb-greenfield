@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class ProfileHead extends Component {
   render() {
     return (
-      <div className="profileWrapper">
+      <div className="profileHeadWrapper profileMainHead">
         <div className="coverPhoto">this is the cover photo</div>
         <div className="profilePic">
           <img

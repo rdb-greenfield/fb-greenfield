@@ -165,16 +165,67 @@ a {
   text-decoration: none;
   font-style: white;
 }
+<<<<<<< HEAD
 >>>>>>> refactored profile component
-/***************** Profile Styling ****************/
+=======
 
-.profileWrapper {
-  /* position: relative; */
+>>>>>>> profile components added/css for profile implemented
+/***************** Profile Styling ****************/
+.profileMain {
+  margin: 0 auto 0 auto;
+  grid-template-columns: repeat(12, 1fr);
+  /* grid-template-rows: repeat(12, 1fr); */
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 15px;
+  width: 55%;
+  display: grid;
+  background-color: white;
+  z-index: 0;
+}
+
+.profileMainHead {
+  grid-column: 1/-1;
+  width: 100%;
+}
+
+.profileIntro {
+  grid-column: 1/6;
+  width: 100%;
+  background-color: orange;
+  margin: 0 auto 0 auto;
+  z-index: 0;
+}
+.profilePost {
+  grid-column: 6/-1;
+  width: 100%;
+  background-color: gray;
+  margin: 0 auto 0 auto;
+  z-index: 0;
+}
+
+.profileFriends {
+  grid-column: 1/6;
+  width: 100%;
+  background-color: teal;
+  margin: 0 auto 0 auto;
+  z-index: 0;
+}
+
+.profileWall {
+  grid-column: 6/-1;
+  width: 100%;
+  background-color: pink;
+  margin: 0 auto 0 auto;
+  z-index: 0;
+}
+/***************** Profile Head Styling ****************/
+
+.profileHeadWrapper {
   grid-template-columns: repeat(32, 1fr);
   grid-template-rows: repeat(32, 1fr);
   margin: 0 auto;
   height: 325px;
-  width: 55%;
+  width: 100%;
   display: grid;
   background-color: white;
   z-index: 0;
@@ -238,28 +289,7 @@ a {
 
 /***************** Wall Styling ****************/
 
-.wallWrapper {
-  /* position: relative; */
-  margin: 20px auto 0 auto;
-  grid-template-columns: repeat(32, 1fr);
-  grid-template-rows: repeat(32, 1fr);
-  /* margin: 0 auto; */
-  width: 55%;
-  display: grid;
-  background-color: white;
-  z-index: 0;
-}
-
-.intro {
-  grid-column: 1/ 13;
-  grid-row: 1/10;
-  width: 100%;
-  background-color: orange;
-  margin: 0 auto;
-  z-index: 0;
-}
-
-.wallPhotos {
+/* .wallPhotos {
   grid-column: 1/ 13;
   grid-row: 10/20;
   width: 100%;
@@ -275,4 +305,4 @@ a {
   background-color: black;
   margin: 0 auto;
   z-index: 0;
-}
+} */
