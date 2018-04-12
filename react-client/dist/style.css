@@ -158,3 +158,78 @@ button {
   margin-left: 25px;
   margin-top: 20px;
 }
+
+/***************** Profile Styling ****************/
+
+.profileWrapper {
+  /* position: relative; */
+  grid-template-columns: repeat(32, 1fr);
+  grid-template-rows: repeat(32, 1fr);
+  margin: 0 auto;
+  height: 325px;
+  width: 55%;
+  display: grid;
+  background-color: white;
+  z-index: 0;
+}
+
+.coverPhoto {
+  grid-column: 1/ -1;
+  grid-row: 1/29;
+  width: 100%;
+  background-color: #395ca9;
+  margin: 0 auto;
+  z-index: 0;
+}
+.profilePic {
+  width: 100px;
+  height: 100px;
+  grid-column: 2/-1;
+  grid-row: 14/28;
+  z-index: 1;
+}
+
+.pic {
+  width: 175px;
+  z-index: 1;
+}
+
+.profileNav {
+  grid-column: 1/-1;
+  grid-row: 29/-1;
+  background-color: red;
+  z-index: 0;
+  height: 40px;
+}
+
+.profileNav ul {
+  display: inline;
+  margin-left: 30%;
+  padding: 0;
+  z-index: 0;
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+.profileNav ul li {
+  display: inline;
+  border-left: 1px solid black;
+  z-index: 0;
+  /* padding: 8.3px; */
+}
+
+.profileNav ul li:nth-last-child(1) {
+  border-right: 1px solid black;
+}
+
+.profileNav a {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  width: 90px;
+}
+
+a {
+  text-decoration: none;
+  font-style: white;
+}
