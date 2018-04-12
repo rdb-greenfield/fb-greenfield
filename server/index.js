@@ -6,9 +6,12 @@ let base = require("./routes/index");
 let auth = require("./routes/models/authentication");
 let users = require("./routes/models/users");
 
+let passport = require("passport");
 require("./passport");
 
 let app = express();
+
+app.use(passport.initialize());
 
 app.use(express.static(__dirname + "/../react-client/dist"));
 app.use(partials());

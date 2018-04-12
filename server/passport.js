@@ -1,9 +1,12 @@
 let _ = require("underscore");
 let db = require("../database-mysql");
 let Users = require("../database-mysql/models/users.js");
-let alert = require("alert-node");
 let LocalStrategy = require("passport-local").Strategy;
 let passport = require("passport");
+let jwt = require("jsonwebtoken");
+let passportJWT = require("passport-jwt");
+let JwtStrategy = passportJWT.Strategy;
+let ExtractJwt = passportJWT.ExtractJwt;
 
 passport.use(
   "local-login",
@@ -20,18 +23,15 @@ passport.use(
         }
         // if user doesn't exist, send notification
         if (!data.length) {
-          alert("Username not found.");
-          callback(null, false, { message: "User not found." });
+          callback(null, false, "User not found.");
         } else {
           // compare user password to hashed password
           Users.verifyUser(password, data[0].pw, function(result) {
             // if result = true -> log the user in
             if (result) {
-              alert("Login successful.");
-              callback(null, data, { message: "Login successful." });
+              callback(null, data, "Login successful.");
             } else {
-              alert("Incorrect password.");
-              callback(null, false, { message: "Incorrect password." });
+              callback(null, false, "Incorrect password.");
             }
           });
         }
@@ -39,3 +39,18 @@ passport.use(
     }
   )
 );
+
+let authenticate = (req, res, next) => {
+  // grab the token from header and verify w/ secret key
+  jwt.verify(req.headers.token, "g6787cQi$q51", function(err, token) {
+    if (err) {
+      // should send an error response here and reload login page - TO DO
+      console.log(err);
+    } else {
+      console.log("token verified");
+      next();
+    }
+  });
+};
+
+module.exports.authenticate = authenticate;
