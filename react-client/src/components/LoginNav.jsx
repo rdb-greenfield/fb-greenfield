@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUsers } from "../actions/index.js";
 
-export default class componentName extends Component {
+export default class LoginNav extends Component {
   render() {
     return (
       <div id="facebook">

@@ -13,7 +13,6 @@ class List extends Component {
     return (
       <div>
         <h4> List Component </h4>
-        {console.log(this.props)}
         {this.props.users.map(user => <div>{user.firstName}</div>)}
       </div>
     );
