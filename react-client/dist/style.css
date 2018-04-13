@@ -348,7 +348,6 @@ a {
   background-color: white;
   z-index: 0;
 }
-
 .coverPhoto {
   grid-column: 1/ -1;
   grid-row: 1/29;
@@ -361,9 +360,16 @@ a {
 .profilePic {
   width: 100px;
   height: 100px;
-  grid-column: 2/-1;
+  grid-column: 2/10;
   grid-row: 14/28;
   z-index: 1;
+}
+.profileName {
+  grid-column: 9/-1;
+  z-index: 1;
+  grid-row: 24/29;
+  font-size: 20px;
+  color: white;
 }
 
 .pic {
