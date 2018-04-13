@@ -12,9 +12,10 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "login_email",
-      passwordField: "login_password"
+      passwordField: "login_password",
+      passReqToCallback: true
     },
-    function(email, password, callback) {
+    function(req, email, password, callback) {
       Users.findUser(email, function(err, data) {
         if (err) {
           callback(err);
