@@ -6,7 +6,6 @@ let passport = require("passport");
 let jwt = require("jsonwebtoken");
 let passportJWT = require("passport-jwt");
 let JwtStrategy = passportJWT.Strategy;
-let ExtractJwt = passportJWT.ExtractJwt;
 
 passport.use(
   "local-login",
