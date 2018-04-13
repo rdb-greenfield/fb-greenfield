@@ -13,7 +13,7 @@ const insertNewPost = (a_id, o_id, p_id, pt, b, i, v, l, callback) => {
 };
 
 const selectWallPosts = (o_id, callback) => {
-  const query = `SELECT * FROM posts WHERE owner_id='${o_id}' AND parent_id=17;`;
+  const query = `SELECT * FROM posts WHERE owner_id='${o_id}';`;
   db.query(query, function(err, results, fields) {
     if (err) {
       callback(err, null);
@@ -23,19 +23,8 @@ const selectWallPosts = (o_id, callback) => {
   });
 };
 
-const selectComments = (p_id, callback) => {
-  const query = `SELECT * FROM posts WHERE parent_id='${p_id}' AND post_type='comment';`;
-  db.query(query, function(err, results, fields) {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, results);
-    }
-  });
-};
-
-const selectSubComments = (p_id, callback) => {
-  const query = `SELECT * FROM posts WHERE parent_id='${p_id}' AND post_type='sub-comment';`;
+const selectFeedPosts = (o_id, callback) => {
+  const query = `SELECT * FROM posts WHERE owner_id='${o_id}';`;
   db.query(query, function(err, results, fields) {
     if (err) {
       callback(err, null);
@@ -47,5 +36,4 @@ const selectSubComments = (p_id, callback) => {
 
 module.exports.insertNewPost = insertNewPost;
 module.exports.selectWallPosts = selectWallPosts;
-module.exports.selectComments = selectComments;
-module.exports.selectSubComments = selectSubComments;
+module.exports.selectFeedPosts = selectFeedPosts;
