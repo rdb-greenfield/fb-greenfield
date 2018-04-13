@@ -32,4 +32,5 @@ router.get("/getAllPosts/:id", function(req, res) {
   });
 });
 
+router.post("/newpost", function(req, res) {});
 module.exports = router;

@@ -12,6 +12,9 @@ export default class ProfileHead extends Component {
             alt=""
           />
         </div>
+        <div className="profileName">
+          <p>Vlad Smirnoff</p>
+        </div>
         <div className="profileNav">
           <ul>
             <li>
