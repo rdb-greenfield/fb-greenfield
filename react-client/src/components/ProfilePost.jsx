@@ -27,11 +27,17 @@ export default class ProfilePost extends Component {
           <textarea
             name="statusPost"
             id="statusPost"
-            cols="60"
-            rows="3"
+            cols="52"
+            rows="2"
             placeholder="What's on your mind, Vlad?"
             className="textareaInProfilePost"
           />
+        </div>
+        <div className="postFeeling">Add a feeling</div>
+        <div className="submitDiv">
+          <button type="submit" className="postOptionsSubmit">
+            Post
+          </button>
         </div>
       </div>
     );
