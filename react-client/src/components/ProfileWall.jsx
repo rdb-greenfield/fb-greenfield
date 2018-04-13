@@ -17,19 +17,18 @@ export default class ProfileWall extends Component {
           <br />
           <span>DATE</span>
         </div>
-        <div className="post-body">
-          BODY TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
-        </div>
-        <div className="post-footer">
-          <a href="#">Like</a>
-          <a href="#">Comment</a>
-          <a href="#">Share</a>
+        <div>
+          <div className="post-body">
+            BODY TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+          </div>
+          <div className="post-footer">
+            <a href="#">Like</a>
+            <a href="#">Comment</a>
+            <a href="#">Share</a>
+          </div>
         </div>
         <div className="like-counter"># Likes</div>
         <div className="comment-feed">
-          <Comment />
-          <Comment />
-          <Comment />
           <Comment />
           <Comment />
           <textarea name="commentInput" placeholder="Write a comment..." />

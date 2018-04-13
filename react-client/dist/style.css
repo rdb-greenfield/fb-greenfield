@@ -480,6 +480,7 @@ a {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 50px 1fr;
+  background-color: lightcyan;
 }
 
 .comment-body {
@@ -490,11 +491,14 @@ a {
 
 .comment-feed {
   box-sizing: border-box;
+  padding: 5px;
 }
 
 .comment-feed textarea {
   border: none;
+  border-radius: 20px;
   outline: none;
+  padding: 5px;
   resize: none;
   width: 100%;
 }
