@@ -167,32 +167,39 @@ a {
 
 .profileMain {
   margin: 0 auto 0 auto;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 320px 515px;
   /* grid-template-rows: repeat(12, 1fr); */
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 12px;
-  width: 851px;
+  width: 850px;
   display: grid;
   background-color: #e9ebee;
   z-index: 0;
 }
 
+.profileLeft {
+  grid-column: 1/2;
+}
+
+.profileRight {
+  grid-column: 2/-1;
+}
+
 .profileMainHead {
   grid-column: 1/-1;
-  width: 851px;
+  width: 100%;
 }
 
 .profileIntro {
-  grid-column: 1/2;
-  width: 323px;
+  width: 320px;
+  height: 400px;
   background-color: orange;
   z-index: 0;
 }
 
 .profilePost {
-  grid-column: 2/-1;
   height: 196px;
-  width: 515px;
+  max-width: 510px;
   background-color: white;
   z-index: 0;
   border-radius: 1%;
@@ -200,19 +207,54 @@ a {
 }
 
 .profileFriends {
-  grid-column: 1/2;
-  width: 323px;
+  max-width: 325px;
   background-color: teal;
-  margin: 0 auto 0 auto;
+  margin: 12px auto 0 auto;
   z-index: 0;
 }
 
 .profileWall {
-  grid-column: 2/-1;
-  width: 515px;
+  max-width: 510px;
+  height: 150px;
   background-color: pink;
-  margin: 0 auto 0 auto;
+  margin: 12px auto 0 auto;
   z-index: 0;
+}
+
+.profilePhotos {
+  max-width: 320px;
+  background-color: lavender;
+  margin: 12px auto 0 auto;
+  z-index: 0;
+  padding: 5px;
+}
+
+.profilePhotosTitle {
+  margin: 0 0 5px 5px;
+}
+
+/***************** Profile Photos Component Styling ****************/
+
+.profilePhotosGrid {
+  display: grid;
+  grid-template-areas: 'profilePhotosPreview profilePhotosPreview profilePhotosPreview';
+  grid-auto-rows: 100px;
+  grid-gap: 5px;
+  margin: 0 auto;
+}
+
+.profilePhotosPreview {
+  height: auto;
+  width: 100px;
+  /* margin: 5px 0 5px 0; */
+}
+
+/***************** Wall Post Component Styling ****************/
+
+.postContainer {
+  margin-top: 12px;
+  max-height: 800px;
+  overflow: auto;
 }
 
 /***************** Status Post Component Styling ****************/
