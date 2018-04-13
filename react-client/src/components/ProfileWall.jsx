@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Comment from './Comment.jsx';
 
 export default class ProfileWall extends Component {
   render() {
@@ -26,7 +27,12 @@ export default class ProfileWall extends Component {
         </div>
         <div className="like-counter"># Likes</div>
         <div className="comment-feed">
-          <div>HERE BE THE COMMENTS</div>
+          <Comment />
+          <Comment />
+          <Comment />
+          <Comment />
+          <Comment />
+          <textarea name="commentInput" placeholder="Write a comment..." />
         </div>
       </div>
     );

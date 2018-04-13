@@ -3,7 +3,17 @@
 =======
 @import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i');
 
+<<<<<<< HEAD
 >>>>>>> Initial layout for ProfileWall (Posts)
+=======
+/***** fixes borders with element width ****/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+>>>>>>> Post Component changes
 body {
   font-family: 'PT Serif', sans-serif;
   margin: 0px;
@@ -462,6 +472,38 @@ a {
   background-color: lightblue;
   font-size: 14px;
   padding: 0 10px;
+}
+
+/***************** Comments ****************/
+
+.comment {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+
+.comment-body {
+  padding: 5px;
+  grid-column-start: 2;
+  font-size: 14px;
+}
+
+.comment-feed {
+  box-sizing: border-box;
+}
+
+.comment-feed textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+.comment-img-circle {
+  border-radius: 50%;
+  width: 35px;
+  margin: 5px;
+  grid-column-start: 0;
 }
 
 /***************** Wall Styling ****************/
