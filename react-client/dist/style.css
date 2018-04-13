@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i");
+=======
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i');
+
+>>>>>>> Initial layout for ProfileWall (Posts)
 body {
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   margin: 0px;
   color: #2c3e50;
   background-color: #ecf0f1;
@@ -15,7 +20,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 3px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   color: #ecf0f1;
   background-color: #e74c3c;
 }
@@ -98,7 +103,7 @@ button {
 .login-submit-button {
   cursor: pointer;
   width: 50px;
-  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #395ca9;
   margin-left: 10px;
@@ -111,7 +116,7 @@ button {
   width: 150px;
   border: none;
   border-radius: 4px;
-  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #548e42;
   font-size: 15px;
@@ -135,14 +140,14 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: "Francois One";
+  font-family: 'Francois One';
 }
 
 .error-login {
   margin-right: 10px;
   color: white;
   font-size: 15px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   background-color: red;
   border-radius: 3px;
 }
@@ -150,7 +155,7 @@ button {
 .error-signup {
   color: white;
   font-size: 15px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   background-color: red;
   border-radius: 3px;
   width: 220px;
@@ -412,7 +417,55 @@ a {
   width: 90px;
 }
 
+<<<<<<< HEAD
 /* **************** Home Nav Styling *************** */
+=======
+/***************** Post Styling ****************/
+
+.post-img-circle {
+  border-radius: 50%;
+  width: 50px;
+  margin: 10px;
+  float: left;
+}
+
+.post-header {
+  float: left;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.post-body {
+  float: left;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.post-footer {
+  background-color: darkgrey;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5px;
+  width: 100%;
+}
+
+.post-footer a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+.like-counter {
+  display: flex;
+  background-color: lightblue;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+/***************** Wall Styling ****************/
+>>>>>>> Initial layout for ProfileWall (Posts)
 
 .homeNav {
   width: 100%;
@@ -428,6 +481,7 @@ a {
   width: 850px;
   padding: 0;
   margin: 0 auto;
+<<<<<<< HEAD
 }
 
 .homeNavComponents logo {
@@ -449,4 +503,19 @@ a {
   padding-top: 5px; */
   border-radius: 3px;
   font-size: 15px;
+=======
+  z-index: 0;
+} */
+
+/**************** Home Styling *****************/
+
+.home {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 15px;
+  margin: 0 auto 0 auto;
+  width: 100%;
+>>>>>>> Initial layout for ProfileWall (Posts)
 }
