@@ -19,7 +19,6 @@ router.get("/getAll", function(req, res) {
   });
 });
 
-<<<<<<< HEAD
 router.get("/getAllPosts/:id", function(req, res) {
   Posts.selectWallPosts(req.params.id, function(err, posts) {
     if (err) {
@@ -33,7 +32,5 @@ router.get("/getAllPosts/:id", function(req, res) {
   });
 });
 
-=======
 router.post("/newpost", function(req, res) {});
->>>>>>> post write component mostly complete
 module.exports = router;

@@ -45,15 +45,10 @@ CREATE TABLE users
       id INT NOT NULL
       auto_increment, 
      author_id INT, 
-<<<<<<< HEAD
      owner_id  INT, 
      parent_id INT,
      post_type VARCHAR
       (45),
-=======
-     owner_id  INT,
-     parent_id INT, 
->>>>>>> post write component mostly complete
      createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
      body      VARCHAR
       (1000), 
@@ -62,7 +57,6 @@ CREATE TABLE users
      video     VARCHAR
       (50), 
      likes     INT, 
-<<<<<<< HEAD
      PRIMARY KEY
       (id), 
      FOREIGN KEY
@@ -217,13 +211,6 @@ CREATE TABLE users
         (author_id, owner_id, parent_id, post_type, body, img, video, likes)
       VALUES
         (1, 3, 11, 'sub-comment', 'warrens comment response to tylers comment', null, null, 0);
-=======
-     PRIMARY KEY (id), 
-     FOREIGN KEY (author_id) REFERENCES users (id) ON DELETE CASCADE, 
-     FOREIGN KEY (owner_id) REFERENCES users (id) ON DELETE CASCADE ,
-     FOREIGN KEY (parent_id) REFERENCES posts (id) ON DELETE CASCADE 
-  ); 
->>>>>>> post write component mostly complete
 /*  Execute this file from the command line by typing: 
  *    mysql -u root < server/schema.sql 
  *  to create the database and the tables.*/     
