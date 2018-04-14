@@ -43,6 +43,40 @@ const selectFeedPosts = (o_id, callback) => {
   });
 };
 
+const likePost = (u_id, p_id, callback) => {
+  const query1 = `SELECT * FROM likes WHERE liker_id='${u_id}' AND post_id='${p_id}'`;
+  const query2 = `UPDATE posts SET likes=likes+1 WHERE id='${p_id}'`;
+  const query3 = `INSERT INTO likes (liker_id, post_id) VALUES ('${u_id}', '${p_id}')`;
+  const query4 = `UPDATE posts SET likes=likes-1 WHERE id='${p_id}'`;
+  const query5 = `DELETE FROM likes WHERE liker_id='${u_id}' AND post_id='${p_id}'`;
+  db.query(query1, function(err, results, fields) {
+    if (err) {
+      callback(err);
+    } else if (results.length) {
+      // like already exists by this user on this post!
+      // decrement the like count in posts table
+      db.query(query4, function(err, results, fields) {
+        err ? console.log(err) : console.log(results);
+      });
+      // remove a like record to the likes join table
+      db.query(query5, function(err, results, fields) {
+        err ? console.log(err) : console.log(results);
+      });
+    } else {
+      // no like exists, let's add one
+      // increment the like count in posts table
+      db.query(query2, function(err, results, fields) {
+        err ? console.log(err) : console.log(results);
+      });
+      // add a like record to the likes join table
+      db.query(query3, function(err, results, fields) {
+        err ? console.log(err) : console.log(results);
+      });
+    }
+  });
+};
+
 module.exports.insertNewPost = insertNewPost;
 module.exports.selectWallPosts = selectWallPosts;
 module.exports.selectFeedPosts = selectFeedPosts;
+module.exports.likePost = likePost;

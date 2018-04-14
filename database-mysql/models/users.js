@@ -28,8 +28,29 @@ const findUser = (e, callback) => {
   });
 };
 
+const searchUsers = (input, callback) => {
+  const query = `SELECT * FROM users WHERE (firstname LIKE '${input}%') OR (lastname LIKE '${input}%')`;
+  db.query(query, function(err, results, fields) {
+    err ? callback(err, null) : callback(null, results);
+  });
+};
+
 const getAllUsers = callback => {
   const query = `SELECT * FROM users;`;
+  db.query(query, function(err, results, fields) {
+    err ? callback(err, null) : callback(null, results);
+  });
+};
+
+const getUserData = (id, callback) => {
+  const query = `select * from users where id='${id}'`;
+  db.query(query, function(err, results, fields) {
+    err ? callback(err, null) : callback(null, results);
+  });
+};
+
+const updateUserData = (id, col, data, callback) => {
+  const query = `UPDATE users SET ${col}='${data}' WHERE id='${id}'`;
   db.query(query, function(err, results, fields) {
     err ? callback(err, null) : callback(null, results);
   });
@@ -60,17 +81,20 @@ const getFriends = (id, callback) => {
   });
 };
 
-const getUserData = (id, callback) => {
-  const query = `select * from users where id='${id}'`;
+const removeFriend = (id1, id2, callback) => {
+  const query = `DELETE FROM friends WHERE (user1_id='${id1}' AND user2_id='${id2}') OR (user1_id='${id2}' AND user2_id='${id1}')`;
   db.query(query, function(err, results, fields) {
     err ? callback(err, null) : callback(null, results);
   });
 };
 
 module.exports.addFriend = addFriend;
+module.exports.searchUsers = searchUsers;
+module.exports.removeFriend = removeFriend;
 module.exports.getFriends = getFriends;
 module.exports.insertNewUser = insertNewUser;
 module.exports.verifyUser = verifyUser;
 module.exports.findUser = findUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserData = getUserData;
+module.exports.updateUserData = updateUserData;
