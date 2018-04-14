@@ -60,9 +60,17 @@ const getFriends = (id, callback) => {
   });
 };
 
+const getUserData = (id, callback) => {
+  const query = `select * from users where id='${id}'`;
+  db.query(query, function(err, results, fields) {
+    err ? callback(err, null) : callback(null, results);
+  });
+};
+
 module.exports.addFriend = addFriend;
 module.exports.getFriends = getFriends;
 module.exports.insertNewUser = insertNewUser;
 module.exports.verifyUser = verifyUser;
 module.exports.findUser = findUser;
 module.exports.getAllUsers = getAllUsers;
+module.exports.getUserData = getUserData;
