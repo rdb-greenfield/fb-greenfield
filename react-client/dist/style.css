@@ -1,6 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i");
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i');
+/***** fixes borders with element width ****/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   margin: 0px;
   color: #2c3e50;
   background-color: #ecf0f1;
@@ -15,7 +22,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 3px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   color: #ecf0f1;
   background-color: #e74c3c;
 }
@@ -98,7 +105,7 @@ button {
 .login-submit-button {
   cursor: pointer;
   width: 50px;
-  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #395ca9;
   margin-left: 10px;
@@ -111,7 +118,7 @@ button {
   width: 150px;
   border: none;
   border-radius: 4px;
-  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #548e42;
   font-size: 15px;
@@ -135,14 +142,14 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: "Francois One";
+  font-family: 'Francois One';
 }
 
 .error-login {
   margin-right: 10px;
   color: white;
   font-size: 15px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   background-color: red;
   border-radius: 3px;
 }
@@ -150,7 +157,7 @@ button {
 .error-signup {
   color: white;
   font-size: 15px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   background-color: red;
   border-radius: 3px;
   width: 220px;
@@ -215,9 +222,11 @@ a {
 
 .profileWall {
   max-width: 510px;
-  height: 150px;
-  background-color: pink;
-  margin: 12px auto 0 auto;
+  /* height: 150px; */
+  display: block;
+  background-color: white;
+  border: 1px darkgrey;
+  margin: 0 0 10px 0;
   z-index: 0;
 }
 
@@ -237,7 +246,7 @@ a {
 
 .profilePhotosGrid {
   display: grid;
-  grid-template-areas: "profilePhotosPreview profilePhotosPreview profilePhotosPreview";
+  grid-template-areas: 'profilePhotosPreview profilePhotosPreview profilePhotosPreview';
   grid-auto-rows: 100px;
   grid-gap: 5px;
   margin: 0 auto;
@@ -412,7 +421,7 @@ a {
   width: 90px;
 }
 
-/* **************** Home Nav Styling *************** */
+/***************** Wall Styling ****************/
 
 .homeNav {
   width: 100%;
@@ -449,4 +458,256 @@ a {
   padding-top: 5px; */
   border-radius: 3px;
   font-size: 15px;
+  z-index: 0;
+}
+
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+/*
+
+/***************** Post Styling ****************/
+.profileWall textarea {
+  background-color: pink;
+  border: none;
+  outline: none;
+  resize: none;
+  /* width: 100%; */
+}
+
+.post-content {
+  padding: 12px 12px 0;
+  font-size: 14px;
+}
+
+.post-img-circle {
+  border-radius: 50%;
+  float: left;
+  margin: 0 8px 0 0;
+  padding: 0 0 3px 0;
+  width: 40px;
+  cursor: pointer;
+}
+
+.post-header {
+  display: block;
+  padding: 0 0 6px 0;
+}
+
+.post-header-text {
+  padding: 3px 0 0 0;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.post-body {
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.post-footer {
+  background-color: lightgrey;
+  display: block;
+  padding: 2px 12px 8px 12px;
+  margin: 12px 0;
+}
+
+.post-footer img {
+  border-radius: 50%;
+  float: left;
+  width: 35px;
+}
+
+.post-options {
+  background-color: lightgrey;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5px;
+  width: 100%;
+}
+
+.post-options a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+.like-counter {
+  display: flex;
+  background-color: lightblue;
+  font-size: 14px;
+  padding: 9px 12px;
+}
+
+/***************** Comments ****************/
+
+.comment {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  background-color: lightcyan;
+}
+
+.comment-body {
+  padding: 5px;
+  grid-column-start: 2;
+  font-size: 14px;
+}
+
+.comment-img-circle {
+  border-radius: 50%;
+  width: 35px;
+  float: left;
+}
+
+.comment-textarea {
+  border-radius: 20px;
+  display: block;
+  padding: 5px;
+  width: 200px;
+  background-color: pink;
 }
