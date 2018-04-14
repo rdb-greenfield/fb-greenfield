@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ProfileHead from "./ProfileHead.jsx";
-import Intro from "./Intro.jsx";
-import ProfilePost from "./ProfilePost.jsx";
-import ProfileFriends from "./ProfileFriends.jsx";
-import ProfileWall from "./ProfileWall.jsx";
-import ProfilePhotos from "./ProfilePhotos.jsx";
-import HomeNav from "./HomeNav.jsx";
+import React, { Component } from 'react';
+import ProfileHead from './ProfileHead.jsx';
+import Intro from './Intro.jsx';
+import ProfilePost from './ProfilePost.jsx';
+import ProfileFriends from './ProfileFriends.jsx';
+import ProfileWall from './ProfileWall.jsx';
+import ProfilePhotos from './ProfilePhotos.jsx';
+import HomeNav from './HomeNav.jsx';
 // import React from "react";
 
 export default () => {
