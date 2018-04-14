@@ -8,7 +8,7 @@ const testGet = id => {
     headers: { token: sessionStorage.getItem("token") }
   })
     .then(function(response) {
-      console.log("Login successful.");
+      console.log(response);
     })
     .catch(err => console.error(err));
 };
@@ -25,7 +25,7 @@ export const fetchUsers = () => dispatch => {
     .catch(err => console.error(err));
 };
 
-export const postLogin = (e, pw) => {
+export const postLogin = (e, pw, cb) => {
   let body = {
     login_email: e,
     login_password: pw
@@ -40,7 +40,6 @@ export const postLogin = (e, pw) => {
       let id = JSON.parse(response.headers.auth).id;
       let token = JSON.parse(response.headers.auth).token;
       sessionStorage.setItem("token", token);
-      console.log(fetchProfile);
       testGet(id);
     })
     .catch(function(err) {
