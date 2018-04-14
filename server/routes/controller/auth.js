@@ -1,5 +1,6 @@
 let express = require("express");
 let router = express.Router();
+let pass = require("../../passport.js");
 
 let _ = require("underscore");
 let db = require("../../../database-mysql");
@@ -23,14 +24,13 @@ router.post("/login", function(req, res, next) {
         if (err) {
           res.send(err);
         }
-        let token = jwt.sign(
-          { data: JSON.parse(user[0].email) },
-          "g6787cQi$q51",
-          {
-            expiresIn: "1hr"
-          }
+        let token = jwt.sign({ data: JSON.parse(user[0].id) }, "g6787cQi$q51", {
+          expiresIn: "1hr"
+        });
+        res.set(
+          "auth",
+          JSON.stringify({ auth: true, token: token, id: user[0].id })
         );
-        res.set("auth", JSON.stringify({ auth: true, token: token }));
         res.set("Access-Control-Expose-Headers", "auth");
         res.send();
       });
@@ -73,5 +73,9 @@ router.post("/signup", function(req, res) {
 router.post("/logout", function(req, res) {
   res.redirect("/");
 });
+
+// router.get("/login", function(req, res) {
+//   console.log("get to the get");
+// });
 
 module.exports = router;

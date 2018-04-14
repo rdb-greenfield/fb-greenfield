@@ -1,29 +1,29 @@
 let express = require("express");
 let bodyParser = require("body-parser");
-let partials = require("express-partials");
+// let partials = require("express-partials");
 let _ = require("underscore");
-let base = require("./routes/index");
-let auth = require("./routes/models/authentication");
-let users = require("./routes/models/users");
-
+let router = require("./routes/index");
+let path = require("path");
 let passport = require("passport");
-require("./passport");
+let { authenticate } = require("./passport.js");
 
 let app = express();
 
 app.use(passport.initialize());
-
 app.use(express.static(__dirname + "/../react-client/dist"));
-app.use(partials());
-
-// Parse JSON (uniform resource locators)
 app.use(bodyParser.json());
-// Parse forms (signup/login)
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/", base);
-app.use("/auth", auth);
-app.use("/users", users);
+// app.use(partials());
+
+// Parse JSON (uniform resource locators)
+// Parse forms (signup/login)
+
+app.use("/", router);
+
+app.get("/*", function(req, res) {
+  res.sendFile(path.resolve(__dirname, "../react-client/dist/index.html"));
+});
 
 app.listen(3050, function() {
   console.log("listening on port 3050!");

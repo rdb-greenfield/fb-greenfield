@@ -5,32 +5,35 @@ import ProfilePost from "./ProfilePost.jsx";
 import ProfileFriends from "./ProfileFriends.jsx";
 import ProfileWall from "./ProfileWall.jsx";
 import ProfilePhotos from "./ProfilePhotos.jsx";
-
+import HomeNav from "./HomeNav.jsx";
 // import React from "react";
 
 export default () => {
   return (
-    <div className="profileMain">
-      <div className="profileMainHead">
-        <ProfileHead />
-      </div>
-      <div className="profileLeft">
-        <Intro />
-        <ProfilePhotos />
-        <ProfileFriends />
-      </div>
-      <div className="profileRight">
-        <ProfilePost />
-        <div className="postContainer">
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
-          <ProfileWall />
+    <div>
+      <HomeNav />
+      <div className="profileMain">
+        <div className="profileMainHead">
+          <ProfileHead />
+        </div>
+        <div className="profileLeft">
+          <Intro />
+          <ProfilePhotos />
+          <ProfileFriends />
+        </div>
+        <div className="profileRight">
+          <ProfilePost />
+          <div className="postContainer">
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+            <ProfileWall />
+          </div>
         </div>
       </div>
     </div>

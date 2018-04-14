@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import LoginNav from "./LoginNav.jsx";
 import List from "./List.jsx";
-import LoginBody from "./LoginBody.jsx";
+import Login from "./Login.jsx";
 import Profile from "./Profile.jsx";
-import HomeNav from "./HomeNav.jsx";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Home from "./Home.jsx";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <HomeNav />
-          <Profile />
-        </div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/login" component={Login} />
+        </Switch>
       </Router>
     );
   }

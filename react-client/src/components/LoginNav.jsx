@@ -32,23 +32,7 @@ export default class LoginNav extends Component {
 
   submitLogin(e) {
     e.preventDefault();
-    postLogin(
-      this.state.email,
-      this.state.password,
-      function(err) {
-        // if error return, render error message
-        if (err) {
-          this.setState({
-            error: err,
-            displayError: "",
-            email: "",
-            password: ""
-          });
-        } else {
-          // render next page
-        }
-      }.bind(this)
-    );
+    postLogin(this.state.email, this.state.password);
   }
 
   render() {
