@@ -40,16 +40,21 @@ passport.use(
 );
 
 let authenticate = (req, res, next) => {
+  if (req.url === "/login" || req.url === "/signup") {
+    next();
+  } else {
+    jwt.verify(req.headers.token, "g6787cQi$q51", function(err, token) {
+      if (err) {
+        // should send an error response here and reload login page - TO DO
+        res.redirect("/login");
+        console.log(err);
+      } else {
+        console.log("token verified");
+        next();
+      }
+    });
+  }
   // grab the token from header and verify w/ secret key
-  jwt.verify(req.headers.token, "g6787cQi$q51", function(err, token) {
-    if (err) {
-      // should send an error response here and reload login page - TO DO
-      console.log(err);
-    } else {
-      console.log("token verified");
-      next();
-    }
-  });
 };
 
 module.exports.authenticate = authenticate;

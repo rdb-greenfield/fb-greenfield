@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUsers } from "../actions/index.js";
 import { postSignup } from "../actions/index.js";
+import LoginNav from "./LoginNav.jsx";
 
 export default class LoginBody extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ export default class LoginBody extends Component {
   render() {
     return (
       <div>
+        <LoginNav />
         <div className="login">
           <div className="login-editor">
             <h2>Create a new account</h2>

@@ -6,15 +6,16 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import allReducers from "./reducers/index.jsx";
 import thunk from "redux-thunk";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
+import routes from "./routes.jsx";
+
 const middleware = [thunk];
 const store = createStore(allReducers, {}, applyMiddleware(...middleware));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <Route path="/" component={App} />
-    </Router>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
