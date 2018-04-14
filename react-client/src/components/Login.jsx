@@ -63,8 +63,6 @@ export default class LoginBody extends Component {
             email: "",
             password: ""
           });
-        } else {
-          // render next page ROUTER NEEDED
         }
       }.bind(this)
     );

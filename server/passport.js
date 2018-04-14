@@ -54,7 +54,6 @@ let authenticate = (req, res, next) => {
       }
     });
   }
-  // grab the token from header and verify w/ secret key
 };
 
 module.exports.authenticate = authenticate;

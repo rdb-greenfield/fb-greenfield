@@ -78,15 +78,15 @@ CREATE TABLE users
       INSERT INTO users
         (firstName, lastName, pw, profilepicture, email)
       VALUES
-        ('Tyler', 'Standley', '$2a$10$WvFS84pvni6NAGZrgwAdGukzBUbK5iAAoz8WNXkFvtjWFUAjfGuaq', 'http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg', 'tyler@gmail.com');
+        ('Tyler', 'Standley', '$2a$10$vxly/iIX.p5.na707H7Mke/bfYJmx76GScIYWFjcgiiFPiq12Hl1C', 'http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg', 'tyler@gmail.com');
       INSERT INTO users
         (firstName, lastName, pw, profilepicture, email)
       VALUES
-        ('Mark', 'Khuzam', '$2a$10$WvFS84pvni6NAGZrgwAdGukzBUbK5iAAoz8WNXkFvtjWFUAjfGuaq', 'http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg', 'mark@gmail.com');
+        ('Mark', 'Khuzam', '$2a$10$vxly/iIX.p5.na707H7Mke/bfYJmx76GScIYWFjcgiiFPiq12Hl1C', 'http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg', 'mark@gmail.com');
       INSERT INTO users
         (firstName, lastName, pw, profilepicture, email)
       VALUES
-        ('Warren', 'Kwong', '$2a$10$WvFS84pvni6NAGZrgwAdGukzBUbK5iAAoz8WNXkFvtjWFUAjfGuaq', 'http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg', 'warren@gmail.com');
+        ('Warren', 'Kwong', '$2a$10$vxly/iIX.p5.na707H7Mke/bfYJmx76GScIYWFjcgiiFPiq12Hl1C', 'http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg', 'warren@gmail.com');
       INSERT INTO users
         (firstName, lastName, pw, profilepicture, email)
       VALUES
