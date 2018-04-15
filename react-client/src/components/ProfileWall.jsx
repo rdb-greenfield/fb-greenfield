@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
-import Comment from './Comment.jsx';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import Comment from "./Comment.jsx";
 
-export default class ProfileWall extends Component {
+class ProfileWall extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="profileWall">
         <div className="post-content">
@@ -10,23 +13,19 @@ export default class ProfileWall extends Component {
             <a href="#">
               <img
                 className="post-img-circle"
-                src="http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg"
+                src={this.props.ownerProfilePicture}
                 alt="default photo"
               />
             </a>
             <div className="post-header-text">
               <a href="#">
-                <span>Rick Sanchez</span>
+                <span>{this.props.author}</span>
               </a>
               <br />
-              <span>THE FUTURE • LOCATION</span>
+              <span>{this.props.timestamp}</span>
             </div>
           </div>
-          <div className="post-body">
-            BODY TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
-            TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
-            TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
-          </div>
+          <div className="post-body">{this.props.body}</div>
         </div>
         <div>
           <div className="post-options">
@@ -40,7 +39,9 @@ export default class ProfileWall extends Component {
               <a href="#">Share</a>
             </span>
           </div>
-          <div className="like-counter">you and 10 others liked this</div>
+          <div className="like-counter">
+            <a href="#">{this.props.likes} Likes</a>
+          </div>
         </div>
         <div className="comment-feed">
           <Comment />
@@ -61,3 +62,11 @@ export default class ProfileWall extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    profile: state.profile
+  };
+}
+
+export default connect(mapStateToProps)(ProfileWall);

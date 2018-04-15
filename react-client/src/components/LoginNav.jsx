@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { postLogin } from "../actions/index.js";
+import { Redirect } from "react-router-dom";
 
-export default class LoginNav extends Component {
+class LoginNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
       error: "",
-      displayError: ""
+      displayError: "",
+      loggedIn: false
     };
 
     this.errorStyle = {
@@ -32,10 +34,10 @@ export default class LoginNav extends Component {
 
   submitLogin(e) {
     e.preventDefault();
-    postLogin(
+    this.props.postLogin(
       this.state.email,
       this.state.password,
-      function(err) {
+      function(err, results) {
         // if error return, render error message
         if (err) {
           this.setState({
@@ -45,39 +47,72 @@ export default class LoginNav extends Component {
             password: ""
           });
         }
+        if (results) {
+          this.setState(
+            {
+              loggedIn: true
+            },
+            console.log(this.props)
+          );
+        }
       }.bind(this)
     );
   }
 
   render() {
-    return (
-      <div id="facebook">
-        <div>
-          <div className="head">
-            <span className="logo">rdb-facebook</span>
-            <div style={this.errorStyle} className="error-login">
-              {this.state.error}
+    {
+      return this.state.loggedIn ? (
+        <Redirect
+          to={{
+            pathname: "/profile"
+          }}
+        />
+      ) : (
+        <div id="facebook">
+          <div>
+            <div className="head">
+              <span className="logo">rdb-facebook</span>
+              <div style={this.errorStyle} className="error-login">
+                {this.state.error}
+              </div>
+              <form name="login" onSubmit={this.submitLogin}>
+                <input
+                  value={this.state.email}
+                  onChange={this.emailChange}
+                  className="login-input"
+                  type="text"
+                  placeholder="Email"
+                />
+                <input
+                  value={this.state.password}
+                  onChange={this.passwordChange}
+                  className="login-input"
+                  type="password"
+                  placeholder="Password"
+                />
+                <button className="login-submit-button">Log In</button>
+              </form>
             </div>
-            <form name="login" onSubmit={this.submitLogin}>
-              <input
-                value={this.state.email}
-                onChange={this.emailChange}
-                className="login-input"
-                type="text"
-                placeholder="Email"
-              />
-              <input
-                value={this.state.password}
-                onChange={this.passwordChange}
-                className="login-input"
-                type="password"
-                placeholder="Password"
-              />
-              <button className="login-submit-button">Log In</button>
-            </form>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    profile: state.profile
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      postLogin: postLogin
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(LoginNav);

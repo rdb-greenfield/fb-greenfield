@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-export default class ProfilePost extends Component {
+class ProfilePost extends Component {
   render() {
     return (
       <div className="profilePost">
@@ -29,7 +31,9 @@ export default class ProfilePost extends Component {
             id="statusPost"
             cols="52"
             rows="2"
-            placeholder="What's on your mind, Vlad?"
+            placeholder={`What's on your mind, ${
+              this.props.profile.user.firstname
+            }`}
             className="textareaInProfilePost"
           />
         </div>
@@ -43,3 +47,11 @@ export default class ProfilePost extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    profile: state.profile
+  };
+}
+
+export default connect(mapStateToProps)(ProfilePost);

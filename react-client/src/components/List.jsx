@@ -13,7 +13,9 @@ class List extends Component {
     return (
       <div>
         <h4> List Component </h4>
-        {this.props.users.map(user => <div>{user.firstName}</div>)}
+        {this.props.users.map(user => {
+          return <p key={user.id}>{user.firstname}</p>;
+        })}
       </div>
     );
   }
