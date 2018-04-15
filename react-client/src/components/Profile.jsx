@@ -27,7 +27,6 @@ class Profile extends Component {
             <ProfilePost />
             <div className="postContainer">
               {this.props.profile.wall.map(post => {
-                console.log(post);
                 if (post.post_type === "post") {
                   return (
                     <ProfileWall
@@ -36,6 +35,7 @@ class Profile extends Component {
                       timestamp={post.createdat}
                       likes={post.likes}
                       ownerProfilePicture={post.profilepicture}
+                      postId={post.id}
                     />
                   );
                 }

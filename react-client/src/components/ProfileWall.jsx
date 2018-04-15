@@ -44,8 +44,20 @@ class ProfileWall extends Component {
           </div>
         </div>
         <div className="comment-feed">
-          <Comment />
-          <Comment />
+          {this.props.profile.wall.map(post => {
+            if (post.post_type === "comment" && post.id === this.props.postId) {
+              console.log("comment", post);
+              return (
+                <Comment
+                  author={post.firstname + " " + post.lastname}
+                  body={post.body}
+                  timestamp={post.createdat}
+                  likes={post.likes}
+                  ownerProfilePicture={post.profilepicture}
+                />
+              );
+            }
+          })}
         </div>
         <div className="post-footer">
           <div>

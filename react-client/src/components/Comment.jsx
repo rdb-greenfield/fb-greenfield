@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
-import CommentChild from './CommentChild.jsx';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import CommentChild from "./CommentChild.jsx";
 
-export default class Comment extends Component {
+class Comment extends Component {
   render() {
     return (
       <div className="comment">
         <img
           className="comment-img-circle"
           alt="default photo"
-          src="http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg"
+          src={this.props.ownerProfilePicture}
         />
         <div className="comment-body">
-          <a href="#">USER </a>
-          <div>text blah blah this is a comment comment comment</div>
+          <a href="#">{this.props.author}</a>
+          <div>{this.props.body}</div>
           <div>
-            <a href="#">Like </a>
+            <p>
+              <a href="#">{this.props.likes}</a> Likes
+            </p>
             •
             <a href="#"> Reply </a>
             •
-            <a href="#"> Time</a>
+            <p>{this.props.timestamp}</p>
           </div>
           <CommentChild />
           <CommentChild />
@@ -29,3 +33,11 @@ export default class Comment extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    profile: state.profile
+  };
+}
+
+export default connect(mapStateToProps)(Comment);
