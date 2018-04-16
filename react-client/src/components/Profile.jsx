@@ -10,6 +10,13 @@ import ProfilePhotos from "./ProfilePhotos.jsx";
 import HomeNav from "./HomeNav.jsx";
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      owner: this.props.profile.user.id
+    };
+  }
+
   render() {
     return (
       <div>
@@ -24,12 +31,13 @@ class Profile extends Component {
             <ProfileFriends />
           </div>
           <div className="profileRight">
-            <ProfilePost />
+            <ProfilePost owner={this.state.owner} />
             <div className="postContainer">
               {this.props.profile.wall.map(post => {
                 if (post.post_type === "post") {
                   return (
                     <ProfileWall
+                      key={post.id}
                       author={post.firstname + " " + post.lastname}
                       body={post.body}
                       timestamp={post.createdat}
@@ -50,38 +58,10 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    user: state.user,
+    currentUser: state.currentUser
   };
 }
 
 export default connect(mapStateToProps)(Profile);
-// export default class Profile extends Component {
-//   render() {
-//     return (
-//       <div className="profileMain">
-//         <div className="profileMainHead">
-//           <ProfileHead />
-//         </div>
-//         <div className="profileLeft">
-//           <Intro />
-//           <ProfilePhotos />
-//           <ProfileFriends />
-//         </div>
-//         <div className="profileRight">
-//           <ProfilePost />
-//           <div className="postContainer">
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//             <ProfileWall />
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }

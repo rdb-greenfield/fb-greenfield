@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Comment from "./Comment.jsx";
+import moment from "moment";
 
 class ProfileWall extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="profileWall">
         <div className="post-content">
@@ -22,7 +22,7 @@ class ProfileWall extends Component {
                 <span>{this.props.author}</span>
               </a>
               <br />
-              <span>{this.props.timestamp}</span>
+              <span>{moment.parseZone(this.props.timestamp).fromNow()}</span>
             </div>
           </div>
           <div className="post-body">{this.props.body}</div>
@@ -45,18 +45,19 @@ class ProfileWall extends Component {
         </div>
         <div className="comment-feed">
           {this.props.profile.wall.map(post => {
-            console.log("comment", this.props.postId);
             if (
               post.post_type === "comment" &&
               post.parent_id === this.props.postId
             ) {
               return (
                 <Comment
+                  key={post.id}
                   author={post.firstname + " " + post.lastname}
                   body={post.body}
                   timestamp={post.createdat}
                   likes={post.likes}
                   ownerProfilePicture={post.profilepicture}
+                  postId={post.id}
                 />
               );
             }

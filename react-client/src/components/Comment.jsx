@@ -24,9 +24,24 @@ class Comment extends Component {
             •
             <p>{this.props.timestamp}</p>
           </div>
-          <CommentChild />
-          <CommentChild />
-          <CommentChild />
+          {this.props.profile.wall.map(post => {
+            if (
+              post.post_type === "sub-comment" &&
+              post.parent_id === this.props.postId
+            ) {
+              return (
+                <CommentChild
+                  key={post.id}
+                  author={post.firstname + " " + post.lastname}
+                  body={post.body}
+                  timestamp={post.createdat}
+                  likes={post.likes}
+                  ownerProfilePicture={post.profilepicture}
+                  postId={post.id}
+                />
+              );
+            }
+          })}
           <textarea name="commentInput" placeholder="Write a comment..." />
         </div>
       </div>

@@ -102,7 +102,8 @@ class LoginNav extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    currentUser: state.currentUser
   };
 }
 

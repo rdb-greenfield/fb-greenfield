@@ -14,39 +14,29 @@ export const postLogin = (e, pw, cb) => dispatch => {
       let id = JSON.parse(response.headers.auth).id;
       let token = JSON.parse(response.headers.auth).token;
       sessionStorage.setItem("token", token);
-
-      axios({
-        method: "get",
-        url: `http://localhost:3050/profile/${id}/`,
-        headers: { token: sessionStorage.getItem("token") }
-      })
-        .then(function(response) {
-          console.log(response.data);
-          dispatch({
-            type: "FETCH_PROFILE",
-            payload: response.data
-          });
-          cb(null, true);
-        })
-        .catch(err => console.error(err));
-
-      // fetchProfile(id, function(response) {
-      // });
+      fetchProfile(id, cb, dispatch);
     })
     .catch(function(err) {
       cb(err.response.data, null);
     });
 };
-// example of how to pass the sessionstorage token into the header on requests
-const fetchProfile = (id, cb) => {
+const fetchProfile = (id, cb, dispatch) => {
   axios({
     method: "get",
     url: `http://localhost:3050/profile/${id}/`,
     headers: { token: sessionStorage.getItem("token") }
   })
     .then(function(response) {
-      console.log(response);
-      cb(response);
+      console.log(response.data);
+      dispatch({
+        type: "FETCH_PROFILE",
+        payload: response.data
+      });
+      dispatch({
+        type: "CURRENT_USER",
+        payload: response.data.user.id
+      });
+      cb(null, true);
     })
     .catch(err => console.error(err));
 };
@@ -111,15 +101,18 @@ export const updateUserData = (id, input, col, cb) => {
     });
 };
 
-// const fetchProfile = id => dispatch => {
-//   console.log(id);
-//   axios
-//     .get(`http://localhost:3050/profile/${id}/`)
-//     .then(function(profile) {
-//       dispatch({
-//         type: "FETCH_PROFILE",
-//         payload: profile.data
-//       });
-//     })
-//     .catch(err => console.error(err));
-// };
+export const postToDB = (post, cb) => dispatch => {
+  axios({
+    method: "post",
+    url: "/users/wallpost",
+    headers: { token: sessionStorage.getItem("token") },
+    data: post
+  })
+    .then(function(response) {
+      fetchProfile(post.author, cb, dispatch);
+    })
+    .catch(function(err) {
+      console.log(err.response.data);
+      cb(err.response.data);
+    });
+};
