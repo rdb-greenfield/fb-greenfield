@@ -18,7 +18,9 @@ class Friends extends Component {
           <div className="profileMainHead">
             <ProfileHead />
           </div>
-          <div className="friendsView">Friends</div>
+          {this.props.friends.map(friend => {
+            return <p>{friend.firstname}</p>;
+          })}
         </div>
       </div>
     );
@@ -28,8 +30,9 @@ class Friends extends Component {
 function mapStateToProps(state) {
   return {
     profile: state.profile,
-    user: state.user,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    users: state.currentUser,
+    friends: state.friends
   };
 }
 

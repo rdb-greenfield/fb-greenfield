@@ -23,7 +23,7 @@ class Profile extends Component {
         <HomeNav />
         <div className="profileMain">
           <div className="profileMainHead">
-            <ProfileHead />
+            <ProfileHead owner={this.state.owner} />
           </div>
           <div className="profileLeft">
             <Intro />

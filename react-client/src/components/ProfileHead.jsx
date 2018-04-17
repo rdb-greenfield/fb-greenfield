@@ -1,8 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { Link, Redirect } from "react-router-dom";
+import { findFriends } from "../actions/index.js";
 
 class ProfileHead extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.getFriends = this.getFriends.bind(this);
+  }
+
+  componentDidMount() {
+    this.getFriends();
+  }
+  getFriends() {
+    var self = this;
+    this.props.findFriends(this.props.owner, function(err, response) {});
+  }
+
   render() {
     return (
       <div className="profileHeadWrapper profileMainHead">
@@ -23,13 +39,13 @@ class ProfileHead extends Component {
         <div className="profileNav">
           <ul>
             <li>
-              <a href="#">Timeline</a>
+              <Link to="/profile">Timeline</Link>
             </li>
             <li>
               <a href="#">About</a>
             </li>
             <li>
-              <a href="#">Friends</a>
+              <Link to="/friends">Friends</Link>
             </li>
             <li>
               <a href="#">Photos</a>
@@ -39,7 +55,6 @@ class ProfileHead extends Component {
             </li>
           </ul>
         </div>
-        {console.log(this.props.profile)}
       </div>
     );
   }
@@ -47,8 +62,20 @@ class ProfileHead extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    currentUser: state.currentUser,
+    users: state.currentUser,
+    friends: state.friends
   };
 }
 
-export default connect(mapStateToProps)(ProfileHead);
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      findFriends: findFriends
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ProfileHead);

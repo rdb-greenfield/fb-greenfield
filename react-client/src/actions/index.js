@@ -116,3 +116,37 @@ export const postToDB = (post, cb) => dispatch => {
       cb(err.response.data);
     });
 };
+
+export const findFriends = (id, cb) => dispatch => {
+  axios({
+    method: "get",
+    url: `http://localhost:3050/users/${id}/friends`,
+    params: { id: id },
+    headers: { token: sessionStorage.getItem("token") }
+  })
+    .then(function(response) {
+      dispatch({
+        type: "FETCH_FRIENDS",
+        payload: response.data
+      });
+      cb(null, response.data);
+    })
+    .catch(err => console.error(err));
+};
+
+export const fetchSelectedProfile = (id, cb) => dispatch => {
+  axios({
+    method: "get",
+    url: `http://localhost:3050/profile/${id}/`,
+    headers: { token: sessionStorage.getItem("token") }
+  })
+    .then(function(response) {
+      console.log(response.data);
+      dispatch({
+        type: "FETCH_PROFILE",
+        payload: response.data
+      });
+      cb(null, true);
+    })
+    .catch(err => console.error(err));
+};

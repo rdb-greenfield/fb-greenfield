@@ -7,6 +7,7 @@ import S3ProfileUploader from "./S3ProfileUploader.jsx";
 import S3CoverUploader from "./S3CoverUploader.jsx";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./Home.jsx";
+import Friends from "./Friends.jsx";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/list" component={List} />
           <Route path="/home" component={Home} />
+          <Route path="/friends" component={Friends} />
         </Switch>
       </Router>
     );
