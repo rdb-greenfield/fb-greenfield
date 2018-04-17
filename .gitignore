@@ -6,8 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 
 configs/
+
 configs/config.js
-configs/*
+
+configs/* 
+
+configs
 
 package-lock.json
 bundle.js
