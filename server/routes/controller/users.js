@@ -15,4 +15,21 @@ router.get("/getall", function(req, res) {
   });
 });
 
+router.post("/update", function(req, res) {
+  Users.updateUserData(
+    req.body.userID,
+    req.body.column,
+    req.body.data,
+    function(err, results) {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+      } else {
+        console.log(results);
+        res.status(200).send();
+      }
+    }
+  );
+});
+
 module.exports = router;

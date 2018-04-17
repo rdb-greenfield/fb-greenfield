@@ -5,6 +5,7 @@ let LocalStrategy = require("passport-local").Strategy;
 let passport = require("passport");
 let jwt = require("jsonwebtoken");
 let passportJWT = require("passport-jwt");
+let configs = require("./../configs/config");
 let JwtStrategy = passportJWT.Strategy;
 
 passport.use(
@@ -43,7 +44,7 @@ let authenticate = (req, res, next) => {
   if (req.url === "/login" || req.url === "/signup") {
     next();
   } else {
-    jwt.verify(req.headers.token, "g6787cQi$q51", function(err, token) {
+    jwt.verify(req.headers.token, configs.HASHKEY, function(err, token) {
       if (err) {
         // should send an error response here and reload login page - TO DO
         res.redirect("/login");

@@ -17,3 +17,9 @@
 // Create the admin user account locally, run these commands from mysql prompt
 // - create user ‘admin’@‘localhost’ identified by ‘admin123’;
 // - grant all privileges on greenfield.* to ‘admin’@‘localhost’;
+
+module.exports = {
+  ACCESSKEY: "AKIAJLQFKHA5RJOVQQZA",
+  SECRETKEY: "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",
+  HASHKEY: "g6787cQi$q51"
+};
