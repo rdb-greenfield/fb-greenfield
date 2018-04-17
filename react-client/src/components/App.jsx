@@ -3,6 +3,8 @@ import LoginNav from "./LoginNav.jsx";
 import List from "./List.jsx";
 import Login from "./Login.jsx";
 import Profile from "./Profile.jsx";
+import S3ProfileUploader from "./S3ProfileUploader.jsx";
+import S3CoverUploader from "./S3CoverUploader.jsx";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./Home.jsx";
 

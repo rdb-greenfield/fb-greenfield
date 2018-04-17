@@ -90,6 +90,27 @@ export const postSignup = (fn, ln, e, pw, cb) => {
     });
 };
 
+export const updateUserData = (id, input, col, cb) => {
+  let body = {
+    userID: id,
+    data: input,
+    column: col
+  };
+
+  axios({
+    method: "post",
+    url: "/users/update",
+    data: body
+  })
+    .then(function(response) {
+      cb(response);
+    })
+    .catch(function(err) {
+      console.log(err.response.data);
+      cb(err.response.data);
+    });
+};
+
 // const fetchProfile = id => dispatch => {
 //   console.log(id);
 //   axios

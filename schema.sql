@@ -12,9 +12,9 @@ CREATE TABLE users
      pw             VARCHAR
   (100) NOT NULL, 
      profilepicture VARCHAR
-  (150), 
+  (300), 
   coverphoto VARCHAR
-  (150), 
+  (300), 
      email          VARCHAR
   (50), 
      aboutme        VARCHAR

@@ -8,6 +8,7 @@ let bodyParser = require("body-parser");
 let Users = require("../../../database-mysql/models/users.js");
 let jwt = require("jsonwebtoken");
 let passport = require("passport");
+let configs = require("./../../../configs/config");
 
 // handle user login route
 router.post("/login", function(req, res, next) {
@@ -24,9 +25,13 @@ router.post("/login", function(req, res, next) {
         if (err) {
           res.send(err);
         }
-        let token = jwt.sign({ data: JSON.parse(user[0].id) }, "g6787cQi$q51", {
-          expiresIn: "1hr"
-        });
+        let token = jwt.sign(
+          { data: JSON.parse(user[0].id) },
+          configs.HASHKEY,
+          {
+            expiresIn: "1hr"
+          }
+        );
         res.set(
           "auth",
           JSON.stringify({ auth: true, token: token, id: user[0].id })
@@ -60,7 +65,7 @@ router.post("/signup", function(req, res) {
           }
         }
       );
-      let token = jwt.sign({ data: req.body.signup_email }, "g6787cQi$q51", {
+      let token = jwt.sign({ data: req.body.signup_email }, configs.HASHKEY, {
         expiresIn: "1hr"
       });
       res.set("auth", JSON.stringify({ auth: true, token: token }));
