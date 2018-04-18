@@ -10,7 +10,7 @@ body {
   font-family: "PT Serif", sans-serif;
   margin: 0px;
   color: #2c3e50;
-  background-color: #ecf0f1;
+  background-color: #f7f7f7;
   font-size: 1.1em;
 }
 
@@ -179,7 +179,7 @@ a {
   grid-gap: 12px;
   width: 850px;
   display: grid;
-  background-color: #e9ebee;
+  background-color: #f7f7f7;
   z-index: 0;
 }
 
@@ -198,9 +198,9 @@ a {
 
 .profileIntro {
   width: 320px;
-  height: 400px;
-  background-color: orange;
+  background-color: lavender;
   z-index: 0;
+  padding: 5px;
 }
 
 .profilePost {
@@ -260,9 +260,18 @@ a {
 .postContainer {
   margin-top: 12px;
   max-height: 800px;
-  overflow: auto;
+  overflow: hidden;
 }
 
+.scrollContainer {
+  max-height: 800px;
+  overflow-y: scroll;
+  padding-right: -5px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+::-webkit-scrollbar {
+  display: none;
+}
 /***************** Status Post Component Styling ****************/
 
 .profilePicInPost {
@@ -378,19 +387,25 @@ a {
   grid-row: 24/29;
   font-size: 20px;
   color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .pic {
   width: 175px;
   z-index: 1;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
 .profileNav {
   grid-column: 1/-1;
   grid-row: 29/-1;
-  background-color: red;
+  background-color: white;
   z-index: 0;
   height: 40px;
+  border-left: 1px solid #3b5998;
+  border-right: 1px solid #3b5998;
+  border-bottom: 1px solid #3b5998;
 }
 
 .profileNav ul {
@@ -417,6 +432,7 @@ a {
   text-decoration: none;
   text-align: center;
   width: 90px;
+  color: #3b5998;
 }
 
 /***************** Wall Styling ****************/
@@ -520,66 +536,27 @@ a {
   color: white;
 }
 
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
+.info {
+  margin: 0 0 0 5px;
+}
+
+.postOptionsInfoButton {
+  margin: 0 0 0 0;
+  padding: 6px 18px 6px 18px;
+  float: right;
+  background-color: #8b9dc3;
+}
+
+.textareaInInfo {
+  vertical-align: middle;
+  resize: none;
+  overflow: auto;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  width: 300px;
+  margin: 5px auto;
+}
 /*
 /*
 /*

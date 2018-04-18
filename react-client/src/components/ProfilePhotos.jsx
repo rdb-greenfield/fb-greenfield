@@ -4,7 +4,9 @@ export default class ProfilePhotos extends Component {
   render() {
     return (
       <div className="profilePhotos">
-        <div className="profilePhotosTitle">Photos</div>
+        <div className="profilePhotosTitle">
+          <strong>Photos</strong>
+        </div>
         <div className="profilePhotosGrid">
           <img
             className="profilePhotosPreview"

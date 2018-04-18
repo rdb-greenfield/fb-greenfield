@@ -28,26 +28,28 @@ class Profile extends Component {
           <div className="profileLeft">
             <Intro />
             <ProfilePhotos />
-            <ProfileFriends />
+            <ProfileFriends friends={this.props.friends} />
           </div>
           <div className="profileRight">
             <ProfilePost owner={this.state.owner} />
             <div className="postContainer">
-              {this.props.profile.wall.map(post => {
-                if (post.post_type === "post") {
-                  return (
-                    <ProfileWall
-                      key={post.id}
-                      author={post.firstname + " " + post.lastname}
-                      body={post.body}
-                      timestamp={post.createdat}
-                      likes={post.likes}
-                      ownerProfilePicture={post.profilepicture}
-                      postId={post.id}
-                    />
-                  );
-                }
-              })}
+              <div className="scrollContainer">
+                {this.props.profile.wall.map(post => {
+                  if (post.post_type === "post") {
+                    return (
+                      <ProfileWall
+                        key={post.id}
+                        author={post.firstname + " " + post.lastname}
+                        body={post.body}
+                        timestamp={post.createdat}
+                        likes={post.likes}
+                        ownerProfilePicture={post.profilepicture}
+                        postId={post.id}
+                      />
+                    );
+                  }
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -60,7 +62,8 @@ function mapStateToProps(state) {
   return {
     profile: state.profile,
     user: state.user,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    friends: state.friends
   };
 }
 
