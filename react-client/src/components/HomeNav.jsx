@@ -16,6 +16,9 @@ let imgStyle = {
   verticalAlign: "middle",
   lineHeight: "30px"
 };
+let linkColor = {
+  color: "white"
+};
 
 class HomeNav extends Component {
   constructor(props) {
@@ -83,13 +86,14 @@ class HomeNav extends Component {
               placeholder="Find Your Friends"
               onChange={this.termChange}
             />
-            <a href="#" className="homeNavHome">
+            <a style={linkColor} href="#" className="homeNavHome">
               Home
             </a>
             <Link
               to="/profile"
               className="homeNavProfile"
               onClick={() => this.getProfile(this.props.currentUser)}
+              style={linkColor}
             >
               Profile
             </Link>

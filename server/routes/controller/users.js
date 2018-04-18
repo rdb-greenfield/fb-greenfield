@@ -108,4 +108,34 @@ router.post("/removefriend", function(req, res) {
   });
 });
 
+router.post("/aboutme", function(req, res) {
+  Users.updateUserData(
+    req.body.userID,
+    req.body.column,
+    req.body.data,
+    function(err, result) {
+      if (result) {
+        res.send(result);
+      } else if (err) {
+        console.log("About Me Update Error: ", err);
+      }
+    }
+  );
+});
+
+router.post("/hometown", function(req, res) {
+  Users.updateUserData(
+    req.body.userID,
+    req.body.column,
+    req.body.data,
+    function(err, result) {
+      if (result) {
+        res.send(result);
+      } else if (err) {
+        console.log("About Me Update Error: ", err);
+      }
+    }
+  );
+});
+
 module.exports = router;

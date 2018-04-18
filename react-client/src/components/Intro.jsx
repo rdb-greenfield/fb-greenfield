@@ -51,6 +51,7 @@ class Intro extends Component {
       data: body
     })
       .then(function(response) {
+        console.log(response.data);
         if (response.data) {
           self.setState({
             editable: false
@@ -66,7 +67,7 @@ class Intro extends Component {
   submitHometown() {
     let body = {
       userID: this.props.currentUser,
-      data: this.state.Hometown,
+      data: this.state.hometown,
       column: "hometown"
     };
     let self = this;
@@ -77,6 +78,7 @@ class Intro extends Component {
       data: body
     })
       .then(function(response) {
+        console.log(response.data);
         if (response.data) {
           self.setState({
             editable: false

@@ -9,7 +9,7 @@ export default class ProfileFriends extends Component {
         </div>
         <div className="profilePhotosGrid">
           {this.props.friends.map((friend, index) => {
-            if (index <= 6) {
+            if (index < 6) {
               return (
                 <img
                   key={friend.id}
