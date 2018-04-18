@@ -369,7 +369,7 @@ a {
   z-index: 1;
 }
 .profileName {
-  grid-column: 9/-1;
+  grid-column: 9/16;
   z-index: 1;
   grid-row: 24/29;
   font-size: 20px;
@@ -486,12 +486,14 @@ a {
   z-index: 4;
 }
 
-/*
-/*
-/*
-/*
-/*
-/*
+.add-friends {
+  grid-column: 26/-1;
+  z-index: 1;
+  grid-row: 25/-1;
+  font-size: 20px;
+  color: white;
+}
+
 /*
 /*
 /*

@@ -79,4 +79,32 @@ router.get("/search/:user", function(req, res) {
   });
 });
 
+router.post("/addfriend", function(req, res) {
+  Users.addFriend(req.body.currentUser, req.body.otherUser, function(
+    err,
+    data
+  ) {
+    if (data) {
+      res.send(data);
+    }
+    if (err) {
+      console.log("Add Friend Error: ", err);
+    }
+  });
+});
+
+router.post("/removefriend", function(req, res) {
+  Users.removeFriend(req.body.currentUser, req.body.otherUser, function(
+    err,
+    data
+  ) {
+    if (data) {
+      res.send(data);
+    }
+    if (err) {
+      console.log("Remove Friend Error: ", err);
+    }
+  });
+});
+
 module.exports = router;
