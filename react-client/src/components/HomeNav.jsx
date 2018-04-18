@@ -32,12 +32,15 @@ class HomeNav extends Component {
   getProfile(value) {
     console.log("clieck", value);
     this.props.fetchSelectedProfile(value, function(err, data) {
+      console.log(data);
       if (data) {
-        <Redirect
-          to={{
-            pathname: "/profile"
-          }}
-        />;
+        return (
+          <Redirect
+            to={{
+              pathname: `/profile`
+            }}
+          />
+        );
       }
     });
   }
@@ -83,7 +86,11 @@ class HomeNav extends Component {
             <a href="#" className="homeNavHome">
               Home
             </a>
-            <Link to="/profile" className="homeNavProfile">
+            <Link
+              to="/profile"
+              className="homeNavProfile"
+              onClick={() => this.getProfile(this.props.currentUser)}
+            >
               Profile
             </Link>
           </div>
@@ -115,7 +122,8 @@ class HomeNav extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    currentUser: state.currentUser
   };
 }
 

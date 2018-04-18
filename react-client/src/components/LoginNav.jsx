@@ -64,7 +64,7 @@ class LoginNav extends Component {
       return this.state.loggedIn ? (
         <Redirect
           to={{
-            pathname: "/profile"
+            pathname: `/profile`
           }}
         />
       ) : (
