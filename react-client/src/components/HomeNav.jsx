@@ -95,24 +95,28 @@ class HomeNav extends Component {
             </Link>
           </div>
         </div>
-        {this.state.term === "" ? (
-          <div className="results-display show-display">Results Display</div>
-        ) : (
-          <div className="results-display">
-            {this.state.searchResults.map(user => {
-              return (
-                <p
-                  key={user.id}
-                  style={style}
-                  onClick={() => this.getProfile(user.id)}
-                  value={user.id}
-                >
-                  {" "}
-                  <img src={user.profilepicture} alt="" style={imgStyle} />{" "}
-                  {user.firstname} {user.lastname}
-                </p>
-              );
-            })}
+        {this.state.term === "" ? null : (
+          <div className="results-display-container">
+            <div className="results-display">
+              {this.state.searchResults.map(user => {
+                return (
+                  <p
+                    key={user.id}
+                    style={style}
+                    onClick={() => this.getProfile(user.id)}
+                    value={user.id}
+                  >
+                    {" "}
+                    <img
+                      src={user.profilepicture}
+                      alt=""
+                      style={imgStyle}
+                    />{" "}
+                    {user.firstname} {user.lastname}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>

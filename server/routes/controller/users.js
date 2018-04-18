@@ -17,6 +17,7 @@ router.get("/getall", function(req, res) {
 });
 
 router.post("/update", function(req, res) {
+  console.log("got to server", req.body);
   Users.updateUserData(
     req.body.userID,
     req.body.column,

@@ -7,7 +7,7 @@ let profile = require("./controller/profile.js");
 
 routes
   .use("/auth", auth)
-  //.use(authenticate)
+  .use(authenticate)
   .use("/users", users)
   .use("/profile", profile);
 

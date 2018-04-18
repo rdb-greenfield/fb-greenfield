@@ -7,7 +7,9 @@ import HomeNav from "./HomeNav.jsx";
 class Friends extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      owner: this.props.profile.user.id
+    };
   }
 
   render() {
@@ -16,7 +18,7 @@ class Friends extends Component {
         <HomeNav />
         <div className="friendsMain">
           <div className="profileMainHead">
-            <ProfileHead />
+            <ProfileHead owner={this.state.owner} />
           </div>
           {this.props.friends.map(friend => {
             return <p>{friend.firstname}</p>;

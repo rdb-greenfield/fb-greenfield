@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link, Redirect } from "react-router-dom";
 import { findFriends } from "../actions/index.js";
+import S3CoverUploader from "./S3CoverUploader.jsx";
+import S3ProfileUploader from "./S3ProfileUploader.jsx";
+
 import axios from "axios";
 const friendButton = {
   padding: "10px 18px 10px 18px",
@@ -13,7 +16,8 @@ class ProfileHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFriend: false
+      isFriend: false,
+      currentUser: this.props.currentUser
     };
     this.getFriends = this.getFriends.bind(this);
     this.checkFriendStatus = this.checkFriendStatus.bind(this);
@@ -86,7 +90,13 @@ class ProfileHead extends Component {
   render() {
     return (
       <div className="profileHeadWrapper profileMainHead">
-        <div className="coverPhoto">this is the cover photo</div>
+        <div className="coverPhoto">
+          <img
+            className="coverPic"
+            src={this.props.profile.user.coverphoto}
+            alt=""
+          />
+        </div>
         <div className="profilePic">
           <img
             className="pic"
@@ -115,6 +125,17 @@ class ProfileHead extends Component {
             ""
           )}
         </div>
+
+        {this.props.owner === this.props.currentUser ? (
+          <div className="cover-updater">
+            <S3CoverUploader currentUser={this.state.currentUser} />
+          </div>
+        ) : null}
+        {this.props.owner === this.props.currentUser ? (
+          <div className="profile-updater">
+            <S3ProfileUploader currentUser={this.state.currentUser} />
+          </div>
+        ) : null}
         <div className="profileNav">
           <ul>
             <li>

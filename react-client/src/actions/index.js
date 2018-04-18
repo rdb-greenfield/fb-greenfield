@@ -90,6 +90,7 @@ export const updateUserData = (id, input, col, cb) => {
   axios({
     method: "post",
     url: "/users/update",
+    headers: { token: sessionStorage.getItem("token") },
     data: body
   })
     .then(function(response) {

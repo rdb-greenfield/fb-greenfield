@@ -361,6 +361,10 @@ a {
   z-index: 0;
 }
 
+.coverPic {
+  width: 850px;
+  height: 285px;
+}
 .profilePic {
   width: 100px;
   height: 100px;
@@ -469,8 +473,14 @@ a {
 .friendView {
 }
 
+.results-display-container {
+  width: 850px;
+  padding: 0;
+  margin: 0 auto;
+}
+
 .results-display {
-  margin-left: 115px;
+  margin-left: 58px;
   width: 438px;
   background: white;
   z-index: 3;
@@ -490,6 +500,22 @@ a {
   grid-column: 26/-1;
   z-index: 1;
   grid-row: 25/-1;
+  font-size: 20px;
+  color: white;
+}
+
+.cover-updater {
+  grid-column: 30/-1;
+  z-index: 1;
+  grid-row: 3/10;
+  font-size: 20px;
+  color: white;
+}
+
+.profile-updater {
+  grid-column: 7/-1;
+  z-index: 2;
+  grid-row: 15/19;
   font-size: 20px;
   color: white;
 }
