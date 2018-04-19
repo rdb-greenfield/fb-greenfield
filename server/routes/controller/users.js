@@ -72,7 +72,6 @@ router.get("/:id/friends", function(req, res) {
 });
 
 router.get("/search/:user", function(req, res) {
-  console.log(req.params.users);
   Users.searchUsers(req.params.user, function(err, data) {
     if (data) {
       res.send(data);
@@ -136,6 +135,16 @@ router.post("/hometown", function(req, res) {
       }
     }
   );
+});
+
+router.post("/photo", function(req, res) {
+  Users.addPhoto(req.body.id, req.body.link, function(err, results) {
+    if (err) {
+      res.status(500).send();
+    } else if (results) {
+      res.status(200).send(results);
+    }
+  });
 });
 
 module.exports = router;

@@ -88,6 +88,22 @@ const removeFriend = (id1, id2, callback) => {
   });
 };
 
+const addPhoto = (id, link, callback) => {
+  // union select statement to check for all friend combinations
+  const query = `INSERT INTO photos (owner_id, photo) VALUES ('${id}', '${link}');`;
+  db.query(query, function(err, results, fields) {
+    err ? callback(err, null) : callback(null, results);
+  });
+};
+
+const getAllUserPhotos = (id, callback) => {
+  // union select statement to check for all friend combinations
+  const query = `SELECT photo FROM photos WHERE owner_id='${id}';`;
+  db.query(query, function(err, results, fields) {
+    err ? callback(err, null) : callback(null, results);
+  });
+};
+
 module.exports.addFriend = addFriend;
 module.exports.searchUsers = searchUsers;
 module.exports.removeFriend = removeFriend;
@@ -98,3 +114,5 @@ module.exports.findUser = findUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserData = getUserData;
 module.exports.updateUserData = updateUserData;
+module.exports.addPhoto = addPhoto;
+module.exports.getAllUserPhotos = getAllUserPhotos;
