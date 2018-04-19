@@ -1,8 +1,49 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { postToDB } from "../actions/index.js";
 
 class ProfilePost extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      body: "",
+      img: "",
+      video: "",
+      feeling: "",
+      posted: false
+    };
+    this.textInsert = this.textInsert.bind(this);
+    this.submitPost = this.submitPost.bind(this);
+  }
+
+  textInsert(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  submitPost() {
+    var postContents = {
+      author: this.props.currentUser,
+      owner: this.props.owner,
+      body: this.state.body,
+      img: this.state.img,
+      video: this.state.video,
+      feeling: this.state.feeling
+    };
+    let self = this;
+    this.props.postToDB(postContents, function(err, data) {
+      if (err) {
+        console.log("error", err);
+      } else {
+        self.setState({
+          posted: !self.state.posted
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <div className="profilePost">
@@ -27,7 +68,7 @@ class ProfilePost extends Component {
             alt=""
           />{" "}
           <textarea
-            name="statusPost"
+            name="body"
             id="statusPost"
             cols="52"
             rows="2"
@@ -35,11 +76,16 @@ class ProfilePost extends Component {
               this.props.profile.user.firstname
             }`}
             className="textareaInProfilePost"
+            onChange={this.textInsert}
           />
         </div>
         <div className="postFeeling">Add a feeling</div>
         <div className="submitDiv">
-          <button type="submit" className="postOptionsSubmit">
+          <button
+            type="submit"
+            className="postOptionsSubmit"
+            onClick={this.submitPost}
+          >
             Post
           </button>
         </div>
@@ -50,8 +96,18 @@ class ProfilePost extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    currentUser: state.currentUser
   };
 }
 
-export default connect(mapStateToProps)(ProfilePost);
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      postToDB: postToDB
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ProfilePost);

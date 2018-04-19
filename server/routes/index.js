@@ -7,13 +7,8 @@ let profile = require("./controller/profile.js");
 
 routes
   .use("/auth", auth)
-  //.use(authenticate)
+  .use(authenticate)
   .use("/users", users)
   .use("/profile", profile);
 
 module.exports = routes;
-
-// routes.get("/secret", pass.authenticate, function(req, res) {
-//   // pass the file name to be rendered to the client
-//   res.send("test.html");
-// });

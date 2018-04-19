@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class CommentChild extends Component {
   render() {
@@ -7,13 +7,13 @@ export default class CommentChild extends Component {
         <img
           className="comment-img-circle"
           alt="default photo"
-          src="http://emblemsbattlefield.com/uploads/posts/2014/7/facebook-default-picture_1.jpg"
+          src={this.props.ownerProfilePicture}
         />
         <div className="comment-body">
-          <a href="#">USER </a>
-          TEXT BLAH BLAH THIS IS MY COMMENT
+          <a href="#">{this.props.author}</a>
+          <div>{this.props.body}</div>
           <div>
-            <a href="#">Like </a>
+            <a href="#">{this.props.likes} Likes</a>
             •
             <a href="#"> Reply</a>
           </div>

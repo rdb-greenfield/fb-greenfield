@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i');
+@import url("https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i");
 /***** fixes borders with element width ****/
 *,
 *:before,
@@ -7,10 +7,10 @@
 }
 
 body {
-  font-family: 'PT Serif', sans-serif;
+  font-family: "PT Serif", sans-serif;
   margin: 0px;
   color: #2c3e50;
-  background-color: #ecf0f1;
+  background-color: #f7f7f7;
   font-size: 1.1em;
 }
 
@@ -22,7 +22,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 3px;
-  font-family: 'PT Serif', sans-serif;
+  font-family: "PT Serif", sans-serif;
   color: #ecf0f1;
   background-color: #e74c3c;
 }
@@ -105,7 +105,7 @@ button {
 .login-submit-button {
   cursor: pointer;
   width: 50px;
-  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
+  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #395ca9;
   margin-left: 10px;
@@ -118,7 +118,7 @@ button {
   width: 150px;
   border: none;
   border-radius: 4px;
-  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
+  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #548e42;
   font-size: 15px;
@@ -142,14 +142,14 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: 'Francois One';
+  font-family: "Francois One";
 }
 
 .error-login {
   margin-right: 10px;
   color: white;
   font-size: 15px;
-  font-family: 'PT Serif', sans-serif;
+  font-family: "PT Serif", sans-serif;
   background-color: red;
   border-radius: 3px;
 }
@@ -157,7 +157,7 @@ button {
 .error-signup {
   color: white;
   font-size: 15px;
-  font-family: 'PT Serif', sans-serif;
+  font-family: "PT Serif", sans-serif;
   background-color: red;
   border-radius: 3px;
   width: 220px;
@@ -174,13 +174,12 @@ a {
 
 .profileMain {
   margin: 0 auto 0 auto;
-  grid-template-columns: 320px 515px;
-  /* grid-template-rows: repeat(12, 1fr); */
+  grid-template-columns: 320px 518px;
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 12px;
   width: 850px;
   display: grid;
-  background-color: #e9ebee;
+  background-color: #f7f7f7;
   z-index: 0;
 }
 
@@ -199,9 +198,9 @@ a {
 
 .profileIntro {
   width: 320px;
-  height: 400px;
-  background-color: orange;
+  background-color: lavender;
   z-index: 0;
+  padding: 5px;
 }
 
 .profilePost {
@@ -222,7 +221,6 @@ a {
 
 .profileWall {
   max-width: 510px;
-  /* height: 150px; */
   display: block;
   background-color: white;
   border: 1px darkgrey;
@@ -246,7 +244,7 @@ a {
 
 .profilePhotosGrid {
   display: grid;
-  grid-template-areas: 'profilePhotosPreview profilePhotosPreview profilePhotosPreview';
+  grid-template-areas: "profilePhotosPreview profilePhotosPreview profilePhotosPreview";
   grid-auto-rows: 100px;
   grid-gap: 5px;
   margin: 0 auto;
@@ -255,7 +253,6 @@ a {
 .profilePhotosPreview {
   height: auto;
   width: 100px;
-  /* margin: 5px 0 5px 0; */
 }
 
 /***************** Wall Post Component Styling ****************/
@@ -263,9 +260,18 @@ a {
 .postContainer {
   margin-top: 12px;
   max-height: 800px;
-  overflow: auto;
+  overflow: hidden;
 }
 
+.scrollContainer {
+  max-height: 800px;
+  overflow-y: scroll;
+  padding-right: -5px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+::-webkit-scrollbar {
+  display: none;
+}
 /***************** Status Post Component Styling ****************/
 
 .profilePicInPost {
@@ -305,7 +311,6 @@ a {
   z-index: 0;
   margin: 0;
   padding: 0;
-  /* padding: 8.3px; */
 }
 
 .postOptions ul li:nth-last-child(1) {
@@ -321,7 +326,6 @@ a {
   text-decoration: none;
   text-align: center;
   margin: 0 10px 0 10px;
-  /* width: 90px; */
 }
 
 .postFeeling {
@@ -366,6 +370,10 @@ a {
   z-index: 0;
 }
 
+.coverPic {
+  width: 850px;
+  height: 285px;
+}
 .profilePic {
   width: 100px;
   height: 100px;
@@ -374,24 +382,30 @@ a {
   z-index: 1;
 }
 .profileName {
-  grid-column: 9/-1;
+  grid-column: 9/16;
   z-index: 1;
   grid-row: 24/29;
   font-size: 20px;
   color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .pic {
   width: 175px;
   z-index: 1;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
 .profileNav {
   grid-column: 1/-1;
   grid-row: 29/-1;
-  background-color: red;
+  background-color: white;
   z-index: 0;
   height: 40px;
+  border-left: 1px solid #3b5998;
+  border-right: 1px solid #3b5998;
+  border-bottom: 1px solid #3b5998;
 }
 
 .profileNav ul {
@@ -407,7 +421,6 @@ a {
   display: inline;
   border-left: 1px solid black;
   z-index: 0;
-  /* padding: 8.3px; */
 }
 
 .profileNav ul li:nth-last-child(1) {
@@ -419,6 +432,7 @@ a {
   text-decoration: none;
   text-align: center;
   width: 90px;
+  color: #3b5998;
 }
 
 /***************** Wall Styling ****************/
@@ -454,86 +468,95 @@ a {
 .searchInput {
   grid-column: 3/20;
   margin: 5px;
-  /* width: 400px;
-  padding-top: 5px; */
   border-radius: 3px;
   font-size: 15px;
   z-index: 0;
 }
 
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
-/*
+/********************* Friends Page Styling *******************/
+
+.friendsMain {
+  margin: 0 auto 0 auto;
+  grid-template-columns: 419px 419px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 12px;
+  width: 850px;
+  display: grid;
+  background-color: #e9ebee;
+  z-index: 0;
+}
+
+.friendView {
+}
+
+.results-display-container {
+  width: 850px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.results-display {
+  margin-left: 58px;
+  width: 438px;
+  background: white;
+  z-index: 3;
+  position: absolute;
+  border-radius: 3px;
+}
+
+.show-display {
+  display: none;
+}
+
+.nav-on-top {
+  z-index: 4;
+}
+
+.add-friends {
+  grid-column: 26/-1;
+  z-index: 1;
+  grid-row: 25/-1;
+  font-size: 20px;
+  color: white;
+}
+
+.cover-updater {
+  grid-column: 30/-1;
+  z-index: 1;
+  grid-row: 3/10;
+  font-size: 20px;
+  color: white;
+}
+
+.profile-updater {
+  grid-column: 7/-1;
+  z-index: 2;
+  grid-row: 15/19;
+  font-size: 20px;
+  color: white;
+}
+
+.info {
+  margin: 0 0 0 5px;
+}
+
+.postOptionsInfoButton {
+  margin: 0 0 0 0;
+  padding: 6px 18px 6px 18px;
+  float: right;
+  background-color: #8b9dc3;
+}
+
+.textareaInInfo {
+  vertical-align: middle;
+  resize: none;
+  overflow: auto;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  width: 300px;
+  margin: 5px auto;
+}
 /*
 /*
 /*

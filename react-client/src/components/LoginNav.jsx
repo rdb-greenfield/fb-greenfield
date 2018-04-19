@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { postLogin } from "../actions/index.js";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class LoginNav extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class LoginNav extends Component {
       return this.state.loggedIn ? (
         <Redirect
           to={{
-            pathname: "/profile"
+            pathname: `/profile`
           }}
         />
       ) : (
@@ -102,7 +102,8 @@ class LoginNav extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    currentUser: state.currentUser
   };
 }
 
