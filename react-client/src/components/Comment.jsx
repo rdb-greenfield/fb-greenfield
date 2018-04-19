@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CommentChild from "./CommentChild.jsx";
-import moment from "moment";
+import Moment from "moment";
 class Comment extends Component {
   render() {
     return (
@@ -22,7 +22,7 @@ class Comment extends Component {
             •
             <a href="#"> Reply </a>
             •
-            <p>{moment.parseZone(this.props.timestamp).fromNow()}</p>
+            <p>{Moment.parseZone(this.props.timestamp).fromNow()}</p>
           </div>
           {this.props.profile.wall.map(post => {
             if (

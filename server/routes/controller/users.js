@@ -17,7 +17,6 @@ router.get("/getall", function(req, res) {
 });
 
 router.post("/update", function(req, res) {
-  console.log("got to server", req.body);
   Users.updateUserData(
     req.body.userID,
     req.body.column,
@@ -73,6 +72,7 @@ router.get("/:id/friends", function(req, res) {
 });
 
 router.get("/search/:user", function(req, res) {
+  console.log(req.params.users);
   Users.searchUsers(req.params.user, function(err, data) {
     if (data) {
       res.send(data);

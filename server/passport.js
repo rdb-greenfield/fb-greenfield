@@ -44,13 +44,13 @@ let authenticate = (req, res, next) => {
   if (req.url === "/login" || req.url === "/signup") {
     next();
   } else {
-    jwt.verify(req.headers.token, configs.HASHKEY, function(err, token) {
+    jwt.verify(req.headers.cookie, configs.HASHKEY, function(err, token) {
       if (err) {
         // should send an error response here and reload login page - TO DO
         res.redirect("/login");
         console.log(err);
       } else {
-        console.log("token verified");
+        // token verified
         next();
       }
     });
