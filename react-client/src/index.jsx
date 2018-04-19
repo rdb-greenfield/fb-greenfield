@@ -12,12 +12,6 @@ import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 const middleware = [thunk];
-// const store = createStore(
-//   allReducers,
-//   {},
-//   applyMiddleware(...middleware),
-//   autoRehydrate()
-// );
 
 const persistConfig = {
   key: "root",
