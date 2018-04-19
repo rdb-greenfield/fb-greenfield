@@ -8,13 +8,31 @@ import allReducers from "./reducers/index.jsx";
 import thunk from "redux-thunk";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 import routes from "./routes.jsx";
-
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import storage from "redux-persist/lib/storage";
 const middleware = [thunk];
-const store = createStore(allReducers, {}, applyMiddleware(...middleware));
+// const store = createStore(
+//   allReducers,
+//   {},
+//   applyMiddleware(...middleware),
+//   autoRehydrate()
+// );
+
+const persistConfig = {
+  key: "root",
+  storage
+};
+
+const persistedReducer = persistReducer(persistConfig, allReducers);
+let store = createStore(persistedReducer, {}, applyMiddleware(...middleware));
+let persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );
