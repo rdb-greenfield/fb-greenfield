@@ -13,21 +13,19 @@ export const postLogin = (e, pw, cb) => dispatch => {
     .then(function(response) {
       let id = JSON.parse(response.headers.auth).id;
       let token = JSON.parse(response.headers.auth).token;
-      sessionStorage.setItem("token", token);
+      document.cookie = token;
       fetchProfile(id, cb, dispatch);
     })
     .catch(function(err) {
-      cb(err.response.data, null);
+      cb(err.response, null);
     });
 };
 const fetchProfile = (id, cb, dispatch) => {
   axios({
     method: "get",
-    url: `http://localhost:3050/profile/${id}/`,
-    headers: { token: sessionStorage.getItem("token") }
+    url: `http://localhost:3050/profile/${id}/`
   })
     .then(function(response) {
-      console.log(response.data);
       dispatch({
         type: "FETCH_PROFILE",
         payload: response.data
@@ -44,8 +42,7 @@ const fetchProfile = (id, cb, dispatch) => {
 export const fetchUsers = () => dispatch => {
   axios({
     method: "get",
-    url: "http://localhost:3050/users/getAll",
-    headers: { token: sessionStorage.getItem("token") }
+    url: "http://localhost:3050/users/getAll"
   })
     .then(function(response) {
       dispatch({
@@ -71,7 +68,7 @@ export const postSignup = (fn, ln, e, pw, cb) => {
   })
     .then(function(response) {
       let token = JSON.parse(response.headers.auth).token;
-      sessionStorage.setItem("token", token);
+      document.cookie = token;
       cb(response);
     })
     .catch(function(err) {
@@ -90,7 +87,6 @@ export const updateUserData = (id, input, col, cb) => {
   axios({
     method: "post",
     url: "/users/update",
-    headers: { token: sessionStorage.getItem("token") },
     data: body
   })
     .then(function(response) {
@@ -106,7 +102,6 @@ export const postToDB = (post, cb) => dispatch => {
   axios({
     method: "post",
     url: "/users/wallpost",
-    headers: { token: sessionStorage.getItem("token") },
     data: post
   })
     .then(function(response) {
@@ -122,8 +117,7 @@ export const findFriends = (id, cb) => dispatch => {
   axios({
     method: "get",
     url: `http://localhost:3050/users/${id}/friends`,
-    params: { id: id },
-    headers: { token: sessionStorage.getItem("token") }
+    params: { id: id }
   })
     .then(function(response) {
       dispatch({
@@ -138,11 +132,9 @@ export const findFriends = (id, cb) => dispatch => {
 export const fetchSelectedProfile = (id, cb) => dispatch => {
   axios({
     method: "get",
-    url: `http://localhost:3050/profile/${id}/`,
-    headers: { token: sessionStorage.getItem("token") }
+    url: `http://localhost:3050/profile/${id}/`
   })
     .then(function(response) {
-      console.log(response.data);
       dispatch({
         type: "FETCH_PROFILE",
         payload: response.data
