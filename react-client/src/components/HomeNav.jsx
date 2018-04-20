@@ -50,8 +50,7 @@ class HomeNav extends Component {
     axios({
       method: "get",
       url: `http://localhost:3050/users/search/${user}`,
-      params: { user: user },
-      headers: { token: sessionStorage.getItem("token") }
+      params: { user: user }
     })
       .then(function(response) {
         self.setState({
@@ -62,12 +61,10 @@ class HomeNav extends Component {
   }
 
   termChange(e) {
-    this.setState(
-      {
-        [e.target.name]: e.target.value
-      },
-      this.searchUsers(this.state.term)
-    );
+    this.setState({
+      term: e
+    });
+    this.searchUsers(e);
   }
   render() {
     return (
@@ -82,7 +79,7 @@ class HomeNav extends Component {
               name="term"
               className="searchInput"
               placeholder="Find Your Friends"
-              onChange={this.termChange}
+              onChange={e => this.termChange(e.target.value)}
             />
             <Link to="/" style={linkColor} className="homeNavHome">
               Home

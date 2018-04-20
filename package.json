@@ -47,6 +47,7 @@
     "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0",
     "request": "^2.85.0",
+    "sqlstring": "^2.3.1",
     "underscore": "^1.8.3"
   }
 }

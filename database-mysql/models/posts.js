@@ -1,9 +1,12 @@
 let db = require("../index.js");
 let _ = require("underscore");
 let mysql = require("mysql");
+const SqlString = require("sqlstring");
 
 const insertNewPost = (a_id, o_id, p_id, pt, b, i, v, l, callback) => {
-  const query = `INSERT INTO posts (author_id, owner_id, parent_id, post_type, body, img, video, likes) VALUES ('${a_id}', '${o_id}', '${p_id}', '${pt}', '${b}', '${i}', '${v}', '${l}');`;
+  const query = `INSERT INTO posts (author_id, owner_id, parent_id, post_type, body, img, video, likes) VALUES ('${a_id}', '${o_id}', '${p_id}', '${pt}', ${SqlString.escape(
+    b
+  )}, '${i}', '${v}', '${l}');`;
   db.query(query, function(err, results, fields) {
     err ? callback(err, null) : callback(null, results);
   });

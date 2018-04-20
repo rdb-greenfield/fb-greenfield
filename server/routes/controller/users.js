@@ -72,6 +72,7 @@ router.get("/:id/friends", function(req, res) {
 });
 
 router.get("/search/:user", function(req, res) {
+  console.log(req.params.user);
   Users.searchUsers(req.params.user, function(err, data) {
     if (data) {
       res.send(data);

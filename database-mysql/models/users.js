@@ -1,11 +1,14 @@
 const db = require("../index.js");
 const mysql = require("mysql");
 const bcrypt = require("bcrypt-nodejs");
+const SqlString = require("sqlstring");
 
 const insertNewUser = (fn, ln, e, pw, callback) => {
   const salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(pw, salt);
-  const query = `INSERT INTO users (firstName, lastName, pw, email) VALUES ('${fn}', '${ln}', '${hash}', '${e}');`;
+  const query = `INSERT INTO users (firstName, lastName, pw, email) VALUES (${SqlString.escape(
+    fn
+  )}, ${SqlString.escape(ln)}, '${hash}', '${e}');`;
   db.query(query, function(err, results, fields) {
     err ? callback(err, null) : callback(null, results);
   });
@@ -29,7 +32,9 @@ const findUser = (e, callback) => {
 };
 
 const searchUsers = (input, callback) => {
-  const query = `SELECT * FROM users WHERE (firstname LIKE '${input}%') OR (lastname LIKE '${input}%')`;
+  const query = `SELECT * FROM users WHERE (firstname LIKE ${SqlString.escape(
+    input + "%"
+  )}) OR (lastname LIKE ${SqlString.escape(input + "%")})`;
   db.query(query, function(err, results, fields) {
     err ? callback(err, null) : callback(null, results);
   });
@@ -50,7 +55,9 @@ const getUserData = (id, callback) => {
 };
 
 const updateUserData = (id, col, data, callback) => {
-  const query = `UPDATE users SET ${col}='${data}' WHERE id='${id}'`;
+  const query = `UPDATE users SET ${col}=${SqlString.escape(
+    data
+  )} WHERE id='${id}'`;
   db.query(query, function(err, results, fields) {
     err ? callback(err, null) : callback(null, results);
   });
