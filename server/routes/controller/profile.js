@@ -20,7 +20,13 @@ router.get("/:id", function(req, res, next) {
         res.status(500).send("Database error.");
       }
       profile["wall"] = data;
-      res.json(profile);
+      users.getAllUserPhotos(req.params.id, function(err, data) {
+        if (err) {
+          res.status(500).send("Database error.");
+        }
+        profile["photos"] = data;
+        res.json(profile);
+      });
     });
   });
 });

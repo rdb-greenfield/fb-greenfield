@@ -248,6 +248,7 @@ a {
   grid-auto-rows: 100px;
   grid-gap: 5px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .profilePhotosPreview {
@@ -375,11 +376,12 @@ a {
   height: 285px;
 }
 .profilePic {
-  width: 100px;
-  height: 100px;
+  width: 170px;
+  height: 180px;
   grid-column: 2/10;
   grid-row: 14/28;
   z-index: 1;
+  overflow: hidden;
 }
 .profileName {
   grid-column: 9/16;
@@ -391,7 +393,7 @@ a {
 }
 
 .pic {
-  width: 175px;
+  width: 170px;
   z-index: 1;
   border: 1px solid black;
   border-radius: 3px;
