@@ -27,7 +27,7 @@ class Profile extends Component {
           </div>
           <div className="profileLeft">
             <Intro />
-            <ProfilePhotos />
+            <ProfilePhotos photos={this.props.profile.photos} />
             <ProfileFriends friends={this.props.friends} />
           </div>
           <div className="profileRight">
