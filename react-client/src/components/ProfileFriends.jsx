@@ -1,6 +1,29 @@
 import React, { Component } from "react";
+import { fetchSelectedProfile } from "../actions/index.js";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Link, Redirect } from "react-router-dom";
 
-export default class ProfileFriends extends Component {
+class ProfileFriends extends Component {
+  constructor(props) {
+    super(props);
+    this.getProfile = this.getProfile.bind(this);
+  }
+
+  getProfile(value) {
+    this.props.fetchSelectedProfile(value, function(err, data) {
+      if (data) {
+        return (
+          <Redirect
+            to={{
+              pathname: `/profile`
+            }}
+          />
+        );
+      }
+    });
+  }
+
   render() {
     return (
       <div className="profilePhotos">
@@ -16,6 +39,7 @@ export default class ProfileFriends extends Component {
                   className="profilePhotosPreview"
                   src={friend.profilepicture}
                   alt=""
+                  onClick={() => this.getProfile(friend.id)}
                 />
               );
             }
@@ -25,3 +49,23 @@ export default class ProfileFriends extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    profile: state.profile,
+    currentUser: state.currentUser,
+    users: state.currentUser,
+    friends: state.friends
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      fetchSelectedProfile: fetchSelectedProfile
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ProfileFriends);

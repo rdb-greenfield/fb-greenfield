@@ -142,7 +142,7 @@ class ProfileHead extends Component {
               <Link to="/profile">Timeline</Link>
             </li>
             <li>
-              <a href="#">About</a>
+              <Link to="/aboutme">About</Link>
             </li>
             <li>
               <Link
@@ -155,10 +155,7 @@ class ProfileHead extends Component {
               </Link>
             </li>
             <li>
-              <a href="#">Photos</a>
-            </li>
-            <li>
-              <a href="#">More</a>
+              <Link to="/photos">Photos</Link>
             </li>
           </ul>
         </div>

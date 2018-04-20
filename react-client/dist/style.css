@@ -294,7 +294,7 @@ a {
 }
 
 .postOptions {
-  background-color: #e9ebee;
+  background-color: #f7f7f7;
   z-index: 0;
   height: 35px;
   margin: 0;
@@ -484,11 +484,22 @@ a {
   grid-gap: 12px;
   width: 850px;
   display: grid;
-  background-color: #e9ebee;
+  background-color: #f7f7f7;
   z-index: 0;
 }
 
 .friendView {
+}
+
+.photosMain {
+  margin: 0 auto 0 auto;
+  grid-template-columns: 850px;
+  grid-auto-rows: minmax(auto, auto);
+  grid-gap: 12px;
+  width: 850px;
+  display: grid;
+  background-color: #f7f7f7;
+  z-index: 0;
 }
 
 .results-display-container {

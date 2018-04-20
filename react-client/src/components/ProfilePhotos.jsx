@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import S3PhotoUploader from "./S3PhotoUploader.jsx";
+import { connect } from "react-redux";
 
-export default class ProfilePhotos extends Component {
+class ProfilePhotos extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="profilePhotos">
         <div className="profilePhotosTitle">
           <strong>Photos</strong>
-          <S3PhotoUploader />
+          {this.props.profile.user.id === this.props.currentUser ? (
+            <S3PhotoUploader />
+          ) : null}
         </div>
         <div className="profilePhotosGrid">
           {this.props.photos.map((photo, index) => {
@@ -32,3 +38,12 @@ export default class ProfilePhotos extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    profile: state.profile,
+    currentUser: state.currentUser
+  };
+}
+
+export default connect(mapStateToProps)(ProfilePhotos);
