@@ -138,7 +138,7 @@ router.post("/hometown", function(req, res) {
 });
 
 router.post("/photo", function(req, res) {
-  Users.addPhoto(req.body.id, req.body.link, function(err, results) {
+  Users.addPhoto(req.body.userID, req.body.data, function(err, results) {
     if (err) {
       res.status(500).send();
     } else if (results) {

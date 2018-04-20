@@ -33,9 +33,7 @@ class HomeNav extends Component {
   }
 
   getProfile(value) {
-    console.log("clieck", value);
     this.props.fetchSelectedProfile(value, function(err, data) {
-      console.log(data);
       if (data) {
         return (
           <Redirect
@@ -86,9 +84,9 @@ class HomeNav extends Component {
               placeholder="Find Your Friends"
               onChange={this.termChange}
             />
-            <a style={linkColor} href="#" className="homeNavHome">
+            <Link to="/" style={linkColor} className="homeNavHome">
               Home
-            </a>
+            </Link>
             <Link
               to="/profile"
               className="homeNavProfile"

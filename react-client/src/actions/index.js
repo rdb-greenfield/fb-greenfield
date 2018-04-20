@@ -143,3 +143,23 @@ export const fetchSelectedProfile = (id, cb) => dispatch => {
     })
     .catch(err => console.error(err));
 };
+
+export const uploadPhoto = (id, input, cb) => {
+  let body = {
+    userID: id,
+    data: input
+  };
+
+  axios({
+    method: "post",
+    url: "/users/photo",
+    data: body
+  })
+    .then(function(response) {
+      cb(response);
+    })
+    .catch(function(err) {
+      console.log(err.response.data);
+      cb(err.response.data);
+    });
+};
