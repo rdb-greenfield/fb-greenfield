@@ -20,6 +20,13 @@ let linkColor = {
   color: "white"
 };
 
+let logout = {
+  color: "white",
+  float: "right",
+  marginTop: "-40px",
+  marginRight: "20px"
+};
+
 class HomeNav extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +37,7 @@ class HomeNav extends Component {
     this.termChange = this.termChange.bind(this);
     this.searchUsers = this.searchUsers.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   getProfile(value) {
@@ -56,6 +64,18 @@ class HomeNav extends Component {
         self.setState({
           searchResults: response.data
         });
+      })
+      .catch(err => console.error(err));
+  }
+
+  logout() {
+    document.cookie = "";
+    axios({
+      method: "get",
+      url: `http://localhost:3050/auth/logout`
+    })
+      .then(function(response) {
+        console.log("Successfully logged out.");
       })
       .catch(err => console.error(err));
   }
@@ -93,6 +113,14 @@ class HomeNav extends Component {
               Profile
             </Link>
           </div>
+          <Link
+            to="/login"
+            style={logout}
+            onClick={() => this.logout()}
+            className="homeNavHome"
+          >
+            Logout
+          </Link>
         </div>
         {this.state.term === "" ? null : (
           <div className="results-display-container">

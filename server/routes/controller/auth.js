@@ -75,12 +75,8 @@ router.post("/signup", function(req, res) {
   });
 });
 
-router.post("/logout", function(req, res) {
-  res.redirect("/");
+router.get("/logout", function(req, res) {
+  res.redirect("/login");
 });
-
-// router.get("/login", function(req, res) {
-//   console.log("get to the get");
-// });
 
 module.exports = router;
