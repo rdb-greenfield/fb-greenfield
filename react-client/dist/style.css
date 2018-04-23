@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i");
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Serif:400,400i,700,700i');
 /***** fixes borders with element width ****/
 *,
 *:before,
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   margin: 0px;
   color: #2c3e50;
   background-color: #f7f7f7;
@@ -22,7 +22,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 3px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   color: #ecf0f1;
   background-color: #e74c3c;
 }
@@ -105,7 +105,7 @@ button {
 .login-submit-button {
   cursor: pointer;
   width: 50px;
-  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #395ca9;
   margin-left: 10px;
@@ -118,7 +118,7 @@ button {
   width: 150px;
   border: none;
   border-radius: 4px;
-  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
   color: #ecf0f1;
   background-color: #548e42;
   font-size: 15px;
@@ -142,14 +142,14 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: "Francois One";
+  font-family: 'Francois One';
 }
 
 .error-login {
   margin-right: 10px;
   color: white;
   font-size: 15px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   background-color: red;
   border-radius: 3px;
 }
@@ -157,7 +157,7 @@ button {
 .error-signup {
   color: white;
   font-size: 15px;
-  font-family: "PT Serif", sans-serif;
+  font-family: 'PT Serif', sans-serif;
   background-color: red;
   border-radius: 3px;
   width: 220px;
@@ -244,7 +244,7 @@ a {
 
 .profilePhotosGrid {
   display: grid;
-  grid-template-areas: "profilePhotosPreview profilePhotosPreview profilePhotosPreview";
+  grid-template-areas: 'profilePhotosPreview profilePhotosPreview profilePhotosPreview';
   grid-auto-rows: 100px;
   grid-gap: 5px;
   margin: 0 auto;
@@ -746,4 +746,22 @@ a {
   padding: 5px;
   width: 200px;
   background-color: pink;
+}
+
+/***************** Feed ****************/
+
+.feed {
+  margin: 12px auto 0 auto;
+  grid-template-columns: 20% 1fr 20%;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 12px;
+  display: grid;
+}
+
+.feedStatus {
+  grid-column: 2/-1;
+}
+
+.feedWall {
+  grid-column: 2/-1;
 }
