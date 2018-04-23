@@ -118,6 +118,7 @@ router.post("/aboutme", function(req, res) {
         res.send(result);
       } else if (err) {
         console.log("About Me Update Error: ", err);
+        res.status(500).send(err);
       }
     }
   );

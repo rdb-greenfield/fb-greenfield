@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 const infoDivs = {
-  marginTop: "10px"
+  marginTop: "10px",
+  fontSize: "15px"
+};
+const infoDivs2 = {
+  fontSize: "12px"
 };
 const firstDiv = {
   marginBottom: "10px",
@@ -47,11 +51,9 @@ class Intro extends Component {
     axios({
       method: "post",
       url: "/users/aboutme",
-      headers: { token: sessionStorage.getItem("token") },
       data: body
     })
       .then(function(response) {
-        console.log(response.data);
         if (response.data) {
           self.setState({
             editable: false
@@ -59,8 +61,7 @@ class Intro extends Component {
         }
       })
       .catch(function(err) {
-        console.log(err.response.data);
-        cb(err.response.data);
+        console.log(err);
       });
   }
 
@@ -122,7 +123,7 @@ class Intro extends Component {
                 className="textareaInInfo"
               />
             ) : (
-              <p>{this.props.profile.user.aboutme}</p>
+              <p style={infoDivs2}>{this.props.profile.user.aboutme}</p>
             )}
           </div>
           <div style={infoDivs}>
@@ -144,7 +145,7 @@ class Intro extends Component {
                 className="textareaInInfo"
               />
             ) : (
-              <p>{this.props.profile.user.hometown}</p>
+              <p style={infoDivs2}>{this.props.profile.user.hometown}</p>
             )}
           </div>
         </div>
