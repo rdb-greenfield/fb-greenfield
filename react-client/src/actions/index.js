@@ -101,11 +101,11 @@ export const updateUserData = (id, input, col, cb) => {
 export const postToDB = (post, cb) => dispatch => {
   axios({
     method: "post",
-    url: "/users/wallpost",
+    url: "/users/post",
     data: post
   })
     .then(function(response) {
-      fetchProfile(post.author, cb, dispatch);
+      fetchFreshProfile(post.owner, cb, dispatch);
     })
     .catch(function(err) {
       console.log(err.response.data);
@@ -129,7 +129,22 @@ export const findFriends = (id, cb) => dispatch => {
     .catch(err => console.error(err));
 };
 
-export const fetchSelectedProfile = (id, cb) => dispatch => {
+const fetchFreshProfile = (id, cb, dispatch) => {
+  axios({
+    method: "get",
+    url: `http://localhost:3050/profile/${id}/`
+  })
+    .then(function(response) {
+      dispatch({
+        type: "FETCH_PROFILE",
+        payload: response.data
+      });
+      cb(null, true);
+    })
+    .catch(err => console.error(err));
+};
+
+export const fetchSelectedProfile = (id, cb, dis2) => dispatch => {
   axios({
     method: "get",
     url: `http://localhost:3050/profile/${id}/`

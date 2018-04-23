@@ -33,12 +33,12 @@ router.post("/update", function(req, res) {
   );
 });
 
-router.post("/wallpost", function(req, res) {
+router.post("/post", function(req, res) {
   Posts.insertNewPost(
     req.body.author,
     req.body.owner,
-    1,
-    "post",
+    req.body.parent,
+    req.body.type,
     req.body.body,
     req.body.img,
     req.body.video,

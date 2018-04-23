@@ -27,6 +27,8 @@ class ProfilePost extends Component {
     var postContents = {
       author: this.props.currentUser,
       owner: this.props.owner,
+      parent: 1,
+      type: "post",
       body: this.state.body,
       img: this.state.img,
       video: this.state.video,

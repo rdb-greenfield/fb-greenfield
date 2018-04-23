@@ -39,6 +39,7 @@ class Profile extends Component {
                     return (
                       <ProfileWall
                         key={post.id}
+                        authorId={post.author_id}
                         author={post.firstname + " " + post.lastname}
                         body={post.body}
                         timestamp={post.createdat}

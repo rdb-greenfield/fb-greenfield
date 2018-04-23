@@ -3,7 +3,41 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CommentChild from "./CommentChild.jsx";
 import Moment from "moment";
+import { postToDB } from "../actions/index.js";
+
 class Comment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      commentInput: "",
+      posted: false
+    };
+    this.textInsert = this.textInsert.bind(this);
+    this.submitComment = this.submitComment.bind(this);
+  }
+
+  textInsert(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  submitComment() {
+    var postComment = {
+      author: this.props.currentUser,
+      owner: this.props.authorId,
+      parent: this.props.postId,
+      type: "sub-comment",
+      body: this.state.commentInput,
+      img: null,
+      video: null
+    };
+    this.props.postToDB(postComment, function(err, data) {
+      if (err) {
+        console.log("error", err);
+      }
+    });
+  }
   render() {
     return (
       <div className="comment">
@@ -17,7 +51,7 @@ class Comment extends Component {
           <div>{this.props.body}</div>
           <div>
             <p>
-              <a href="#">{this.props.likes}</a> Likes
+              <a href="#">{this.props.likes} Likes</a>
             </p>
             •
             <a href="#"> Reply </a>
@@ -42,7 +76,16 @@ class Comment extends Component {
               );
             }
           })}
-          <textarea name="commentInput" placeholder="Write a comment..." />
+          <textarea
+            name="commentInput"
+            placeholder="Press Enter to post"
+            onChange={this.textInsert}
+            onKeyPress={event => {
+              if (event.key === "Enter") {
+                this.submitComment();
+              }
+            }}
+          />
         </div>
       </div>
     );
@@ -51,8 +94,18 @@ class Comment extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.profile
+    profile: state.profile,
+    currentUser: state.currentUser
   };
 }
 
-export default connect(mapStateToProps)(Comment);
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      postToDB: postToDB
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Comment);

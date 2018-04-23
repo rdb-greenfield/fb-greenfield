@@ -11,6 +11,10 @@ import Friends from "./Friends.jsx";
 import Photos from "./Photos.jsx";
 import About from "./About.jsx";
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Router>
@@ -19,7 +23,6 @@ class App extends Component {
           <Route path="/profile" component={Profile} />
           <Route path="/login" component={Login} />
           <Route path="/list" component={List} />
-          <Route path="/home" component={Home} />
           <Route path="/friends" component={Friends} />
           <Route path="/photos" component={Photos} />
           <Route path="/aboutme" component={About} />
