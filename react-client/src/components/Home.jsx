@@ -1,11 +1,11 @@
 import React from "react";
 import S3CoverUploader from "./S3CoverUploader.jsx";
-
+import ProfilePost from "./ProfilePost.jsx";
+import ProfileWall from "./ProfileWall.jsx";
 export default () => {
   return (
     <div>
-      <h1>Welcome Home</h1>
-      <S3CoverUploader />
+      <h1>HelloHome</h1>
     </div>
   );
 };

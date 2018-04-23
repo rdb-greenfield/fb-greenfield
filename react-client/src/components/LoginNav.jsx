@@ -48,12 +48,9 @@ class LoginNav extends Component {
           });
         }
         if (results) {
-          this.setState(
-            {
-              loggedIn: true
-            },
-            console.log(this.props)
-          );
+          this.setState({
+            loggedIn: true
+          });
         }
       }.bind(this)
     );

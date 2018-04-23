@@ -41,6 +41,7 @@ passport.use(
 );
 
 let authenticate = (req, res, next) => {
+  console.log(req.url);
   if (req.url === "/login" || req.url === "/signup") {
     next();
   } else {
