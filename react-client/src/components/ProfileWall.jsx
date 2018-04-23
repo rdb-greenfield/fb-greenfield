@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import Comment from "./Comment.jsx";
-import moment from "moment";
-import { postToDB, fetchSelectedProfile } from "../actions/index.js";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Comment from './Comment.jsx';
+import moment from 'moment';
+import { postToDB, fetchSelectedProfile } from '../actions/index.js';
 
 class ProfileWall extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      commentInput: ""
+      commentInput: ''
     };
     this.textInsert = this.textInsert.bind(this);
     this.submitComment = this.submitComment.bind(this);
@@ -26,14 +26,14 @@ class ProfileWall extends Component {
       author: this.props.currentUser,
       owner: this.props.authorId,
       parent: this.props.postId,
-      type: "comment",
+      type: 'comment',
       body: this.state.commentInput,
       img: null,
       video: null
     };
     this.props.postToDB(postComment, function(err, data) {
       if (err) {
-        console.log("error", err);
+        console.log('error', err);
       }
       if (data) {
         <Redirect
@@ -84,16 +84,16 @@ class ProfileWall extends Component {
           </div>
         </div>
         <div className="comment-feed">
-          {this.props.profile.wall.map(post => {
+          {this.props.profile.wall.reverse().map(post => {
             if (
-              post.post_type === "comment" &&
+              post.post_type === 'comment' &&
               post.parent_id === this.props.postId
             ) {
               return (
                 <Comment
                   key={post.id}
                   authorId={post.author_id}
-                  author={post.firstname + " " + post.lastname}
+                  author={post.firstname + ' ' + post.lastname}
                   body={post.body}
                   timestamp={post.createdat}
                   likes={post.likes}
@@ -117,7 +117,7 @@ class ProfileWall extends Component {
               placeholder="Press Enter to post"
               onChange={this.textInsert}
               onKeyPress={event => {
-                if (event.key === "Enter") {
+                if (event.key === 'Enter') {
                   this.submitComment();
                 }
               }}

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import CommentChild from "./CommentChild.jsx";
-import Moment from "moment";
-import { postToDB } from "../actions/index.js";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import CommentChild from './CommentChild.jsx';
+import Moment from 'moment';
+import { postToDB } from '../actions/index.js';
 
 class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      commentInput: "",
+      commentInput: '',
       posted: false
     };
     this.textInsert = this.textInsert.bind(this);
@@ -27,14 +27,14 @@ class Comment extends Component {
       author: this.props.currentUser,
       owner: this.props.authorId,
       parent: this.props.postId,
-      type: "sub-comment",
+      type: 'sub-comment',
       body: this.state.commentInput,
       img: null,
       video: null
     };
     this.props.postToDB(postComment, function(err, data) {
       if (err) {
-        console.log("error", err);
+        console.log('error', err);
       }
     });
   }
@@ -50,23 +50,23 @@ class Comment extends Component {
           <a href="#">{this.props.author}</a>
           <div>{this.props.body}</div>
           <div>
-            <p>
-              <a href="#">{this.props.likes} Likes</a>
-            </p>
+            <span>
+              <a href="#">{this.props.likes}</a> Likes
+            </span>
             •
             <a href="#"> Reply </a>
             •
-            <p>{Moment.parseZone(this.props.timestamp).fromNow()}</p>
+            <span> {Moment.parseZone(this.props.timestamp).fromNow()}</span>
           </div>
           {this.props.profile.wall.map(post => {
             if (
-              post.post_type === "sub-comment" &&
+              post.post_type === 'sub-comment' &&
               post.parent_id === this.props.postId
             ) {
               return (
                 <CommentChild
                   key={post.id}
-                  author={post.firstname + " " + post.lastname}
+                  author={post.firstname + ' ' + post.lastname}
                   body={post.body}
                   timestamp={post.createdat}
                   likes={post.likes}
@@ -81,7 +81,7 @@ class Comment extends Component {
             placeholder="Press Enter to post"
             onChange={this.textInsert}
             onKeyPress={event => {
-              if (event.key === "Enter") {
+              if (event.key === 'Enter') {
                 this.submitComment();
               }
             }}

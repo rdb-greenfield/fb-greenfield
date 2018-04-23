@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import ProfileHead from "./ProfileHead.jsx";
-import Intro from "./Intro.jsx";
-import ProfilePost from "./ProfilePost.jsx";
-import ProfileFriends from "./ProfileFriends.jsx";
-import ProfileWall from "./ProfileWall.jsx";
-import ProfilePhotos from "./ProfilePhotos.jsx";
-import HomeNav from "./HomeNav.jsx";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ProfileHead from './ProfileHead.jsx';
+import Intro from './Intro.jsx';
+import ProfilePost from './ProfilePost.jsx';
+import ProfileFriends from './ProfileFriends.jsx';
+import ProfileWall from './ProfileWall.jsx';
+import ProfilePhotos from './ProfilePhotos.jsx';
+import HomeNav from './HomeNav.jsx';
 
 class Profile extends Component {
   constructor(props) {
@@ -34,13 +34,13 @@ class Profile extends Component {
             <ProfilePost owner={this.state.owner} />
             <div className="postContainer">
               <div className="scrollContainer">
-                {this.props.profile.wall.map(post => {
-                  if (post.post_type === "post") {
+                {this.props.profile.wall.reverse().map(post => {
+                  if (post.post_type === 'post') {
                     return (
                       <ProfileWall
                         key={post.id}
                         authorId={post.author_id}
-                        author={post.firstname + " " + post.lastname}
+                        author={post.firstname + ' ' + post.lastname}
                         body={post.body}
                         timestamp={post.createdat}
                         likes={post.likes}
